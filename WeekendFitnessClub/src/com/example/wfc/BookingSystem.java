@@ -37,6 +37,15 @@ public class BookingSystem {
     }
 
     public void bookLesson(Customer customer, Lesson lesson){
+        if (lesson.isBookingFull()){
+            System.out.println("Sorry. This "+lesson.getFitnessType()+"is full");
+        }else {
+            Booking booking = new Booking(customer, lesson);
+            lesson.addBookingList(booking);
+            bookingsDbArray.add(booking);
+            System.out.println("Booking confirmed for " + customer.getName() + " on " + lesson.getDay() + " for " + lesson.getFitnessType() + ".");
+        }
+
 
     }
 }

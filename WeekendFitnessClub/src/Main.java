@@ -1,3 +1,4 @@
+import com.example.wfc.BookingSystem;
 import com.example.wfc.Customer;
 import com.example.wfc.Lesson;
 
@@ -100,28 +101,37 @@ public class Main {
 
 
 
-        System.out.println("Please select any option:\n");
-        System.out.println("1. View lessons by day\n");
-        System.out.println("2. View lessons by fitness type\n");
-        System.out.println("3. Write a Review\n");
-        System.out.println("4. View Report\n");
-        int customerChoice = scanner.nextInt();
+//        System.out.println("Please select any option:\n");
+//        System.out.println("1. View lessons by day\n");
+//        System.out.println("2. View lessons by fitness type\n");
+//        System.out.println("3. Write a Review\n");
+//        System.out.println("4. View Report\n");
+//        int customerChoice = scanner.nextInt();
+//
+//        switch (customerChoice){
+//            case 1:
+//                for (Lesson lesson : lessons){
+//                    lesson.viewLessonByDay("saturday");
+//                }
+//                break;
+//
+//            case 2:
+//                for (Lesson lesson : lessons){
+//                    lesson.viewLessonByFitnessType("yoga");
+//                }
+//                break;
+//        }
 
-        switch (customerChoice){
-            case 1:
-                for (Lesson lesson : lessons){
-                    lesson.viewLessonByDay("saturday");
-                }
-                break;
+        BookingSystem bookingSystem = new BookingSystem();
 
-            case 2:
-                for (Lesson lesson : lessons){
-                    lesson.viewLessonByFitnessType("yoga");
-                }
-                break;
-        }
+        bookingSystem.bookLesson(customer1, lessons[2]);
 
-
+//        for (Lesson lesson : lessons){
+//                    if(lesson.getFitnessType()==choiceType && lesson.getDay()==choiceDay
+//                            && lesson.getWeekend()==choiceWeekedn;){
+//                bookingSystem.bookLesson(customer1, lesson);
+//            }
+//                }
 
 
 

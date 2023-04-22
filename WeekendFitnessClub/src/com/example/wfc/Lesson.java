@@ -10,11 +10,14 @@ public class Lesson {
 
     private int availableCapacity;
 
+    private ArrayList<Booking> bookingList;
+
     public Lesson(String fitnessType, String day, String weekend, int maxCapacity) {
         this.fitnessType = fitnessType;
         this.day = day;
         this.weekend = weekend;
         this.maxCapacity = maxCapacity;
+        this.bookingList = new ArrayList<>();
     }
 
     public String getFitnessType() {
@@ -31,6 +34,18 @@ public class Lesson {
 
     public String getWeekend(){
         return weekend;
+    }
+
+    public ArrayList<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public boolean isBookingFull() {
+        return bookingList.size() >= maxCapacity;
+    }
+
+    public void addBookingList(Booking booking){
+        bookingList.add(booking);
     }
 
     public void reduceMaxCapacity(){
@@ -60,5 +75,6 @@ public class Lesson {
             System.out.printf("%-10s %-10s %-10s %-10d %-10d \n", fitnessType, day, weekend, maxCapacity, availableCapacity);
         }
     }
+
 
 }
