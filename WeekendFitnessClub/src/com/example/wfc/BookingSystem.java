@@ -35,4 +35,8 @@ public class BookingSystem {
     public void addLesson(Lesson lesson){
         lessonsDbArray.add(lesson);
     }
+
+    public void bookLesson(Customer customer, Lesson lesson){
+
+    }
 }

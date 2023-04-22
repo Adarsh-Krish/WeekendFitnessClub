@@ -25,4 +25,8 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void viewCustomer(){
+        System.out.println("Username is "+ name +" and email is "+ email);
+    }
 }
