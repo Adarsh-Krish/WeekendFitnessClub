@@ -1,5 +1,6 @@
 package com.example.wfc;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 
 public class BookingSystem {
@@ -58,6 +59,20 @@ public class BookingSystem {
             bookingsDbArray.remove(booking);
             System.out.println("Booking cancelled for " + booking.getCustomer().getName() + " on " + lesson.getDay() + " for " + lesson.getFitnessType() + ".");
 
+        }
+    }
+
+    public void changeBooking(Booking booking, Lesson newlesson){
+        if (newlesson.isBookingFull()){
+            System.out.println("Sorry, this lesson is already full.");
+        } else if (booking.isAttended()){
+            System.out.println("Sorry, you cannot change an already attended lesson.");
+        } else {
+            Lesson oldLesson = booking.getLesson();
+            oldLesson.removeBookingList(booking);
+            booking.setLesson(newlesson);
+            newlesson.addBookingList(booking);
+            System.out.println("Booking changed for " + booking.getCustomer().getName() + " from " + oldLesson.getDay() + " for " + oldLesson.getFitnessType() + " to " + newlesson.getDay() + " for " + newlesson.getFitnessType() + ".");
         }
     }
 

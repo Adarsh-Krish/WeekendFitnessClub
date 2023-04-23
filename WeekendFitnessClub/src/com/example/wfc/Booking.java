@@ -28,4 +28,7 @@ public class Booking {
         this.attended = attended;
     }
 
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
 }

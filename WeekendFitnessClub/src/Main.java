@@ -129,8 +129,15 @@ public class Main {
         bookingSystem.bookLesson(customer3, lessons[20]);
         bookingSystem.bookLesson(customer4, lessons[3]);
 
+//        To cancel a booking
         Booking unwantedBooking = bookingSystem.getBookings().get(1);
         bookingSystem.cancelBooking(unwantedBooking);
+
+//        To change a booking
+        Booking wrongBooking = bookingSystem.getBookings().get(1);
+        bookingSystem.changeBooking(wrongBooking, lessons[30]);
+
+
 
 //        for (Lesson lesson : lessons){
 //                    if(lesson.getFitnessType()==choiceType && lesson.getDay()==choiceDay
