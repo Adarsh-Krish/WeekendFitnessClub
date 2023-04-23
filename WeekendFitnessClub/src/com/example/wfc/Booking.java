@@ -31,4 +31,8 @@ public class Booking {
     public void setLesson(Lesson lesson) {
         this.lesson = lesson;
     }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 }

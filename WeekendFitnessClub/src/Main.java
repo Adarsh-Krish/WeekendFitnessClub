@@ -137,6 +137,10 @@ public class Main {
         Booking wrongBooking = bookingSystem.getBookings().get(1);
         bookingSystem.changeBooking(wrongBooking, lessons[30]);
 
+//        To rate
+        Booking rateBooking = bookingSystem.getBookings().get(0);
+        rateBooking.setAttended(true);
+        bookingSystem.rateLesson(rateBooking, 4);
 
 
 //        for (Lesson lesson : lessons){

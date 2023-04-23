@@ -76,6 +76,16 @@ public class BookingSystem {
         }
     }
 
+
+    public void rateLesson(Booking booking, int rating){
+        if (!booking.isAttended()){
+            System.out.println("You cannot rate a lesson that you have not attended.");
+        } else {
+            booking.setRating(rating);
+            System.out.println("Thank you for your response.");
+        }
+    }
+
 //    for (Booking b : bookingsDbArray) {
 //        System.out.println("Customer Name:" + b.getCustomer().getName());
 ////            System.out.println("Customer Email:"+b.getCustomer().getEmail());
