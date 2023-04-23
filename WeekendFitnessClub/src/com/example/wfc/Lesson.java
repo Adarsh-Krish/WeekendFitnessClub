@@ -8,7 +8,7 @@ public class Lesson {
     private String weekend;
     private int maxCapacity;
 
-    private int availableCapacity;
+    private int availableCapacity = 0;
 
     private ArrayList<Booking> bookingList;
 
@@ -32,6 +32,10 @@ public class Lesson {
         return maxCapacity;
     }
 
+    public int getAvailableCapacity() {
+        return availableCapacity;
+    }
+
     public String getWeekend(){
         return weekend;
     }
@@ -48,21 +52,27 @@ public class Lesson {
         bookingList.add(booking);
     }
 
-    public void reduceMaxCapacity(){
-        if (maxCapacity>0){
-            this.availableCapacity = maxCapacity-1;
-        } else {
-            System.out.println("Maximum Capacity is empty");
-        }
+    public void removeBookingList(Booking booking){
+        bookingList.remove(booking);
     }
 
-    public void increaseMaxCapacity(){
-        if (maxCapacity<5){
-            this.availableCapacity = maxCapacity+1;
-        } else {
-            System.out.println("Maximum Capacity is Full");
-        }
-    }
+//    public void increaseAvailableCapacity(){
+//        if (availableCapacity<maxCapacity){
+//            this.availableCapacity = availableCapacity+1;
+//        } else {
+//            System.out.println("Maximum Capacity is empty");
+//        }
+//    }
+//
+//    public void reduceAvailableCapacity(){
+//        if (availableCapacity>0){
+//            this.availableCapacity = availableCapacity-1;
+//        } else {
+//            System.out.println("Maximum Capacity is empty");
+//        }
+//    }
+
+
 
     public void viewLessonByDay(String selectedDay){
         if (selectedDay.equalsIgnoreCase(getDay())){

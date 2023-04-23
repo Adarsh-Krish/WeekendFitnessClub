@@ -4,10 +4,13 @@ public class Booking {
 
     private Customer customer;
     private Lesson lesson;
+    private boolean attended;
+    private int rating;
 
     public Booking(Customer customer, Lesson lesson){
         this.customer = customer;
         this.lesson = lesson;
+        this.attended = false;
     }
 
     public Customer getCustomer() {
@@ -17,4 +20,12 @@ public class Booking {
     public Lesson getLesson() {
         return lesson;
     }
+
+    public boolean isAttended() {
+        return attended;
+    }
+    public void setAttended(boolean attended) {
+        this.attended = attended;
+    }
+
 }

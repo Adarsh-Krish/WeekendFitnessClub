@@ -26,26 +26,49 @@ public class BookingSystem {
     }
 
 
-//    Function to add a customer
-    public void addCustomer(Customer customer){
+    //    Function to add a customer
+    public void addCustomer(Customer customer) {
         customersDbArray.add(customer);
     }
 
-//    Function to add a Lesson
-    public void addLesson(Lesson lesson){
+    //    Function to add a Lesson
+    public void addLesson(Lesson lesson) {
         lessonsDbArray.add(lesson);
     }
 
-    public void bookLesson(Customer customer, Lesson lesson){
-        if (lesson.isBookingFull()){
-            System.out.println("Sorry. This "+lesson.getFitnessType()+"is full");
-        }else {
+    public void bookLesson(Customer customer, Lesson lesson) {
+        if (lesson.isBookingFull()) {
+            System.out.println("Sorry. This " + lesson.getFitnessType() + "is full");
+        } else {
             Booking booking = new Booking(customer, lesson);
             lesson.addBookingList(booking);
             bookingsDbArray.add(booking);
             System.out.println("Booking confirmed for " + customer.getName() + " on " + lesson.getDay() + " for " + lesson.getFitnessType() + ".");
         }
 
-
     }
+
+
+    public void cancelBooking(Booking booking) {
+        if (booking.isAttended()) {
+            System.out.println("Sorry, you cannot cancel an already attended lesson.");
+        } else {
+            Lesson lesson = booking.getLesson();
+            lesson.removeBookingList(booking);
+            bookingsDbArray.remove(booking);
+            System.out.println("Booking cancelled for " + booking.getCustomer().getName() + " on " + lesson.getDay() + " for " + lesson.getFitnessType() + ".");
+
+        }
+    }
+
+//    for (Booking b : bookingsDbArray) {
+//        System.out.println("Customer Name:" + b.getCustomer().getName());
+////            System.out.println("Customer Email:"+b.getCustomer().getEmail());
+//        System.out.println("Fitness Type:" + b.getLesson().getFitnessType());
+////            System.out.println("Day:"+b.getLesson().getDay());
+////            System.out.println("Weekend:"+b.getLesson().getWeekend());
+////            System.out.println("Available Capacity:"+b.getLesson().getAvailableCapacity());
+////            System.out.println("Max Capacity:"+b.getLesson().getMaxCapacity());
+//
+//    }
 }

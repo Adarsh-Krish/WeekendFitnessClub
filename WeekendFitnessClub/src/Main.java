@@ -1,3 +1,4 @@
+import com.example.wfc.Booking;
 import com.example.wfc.BookingSystem;
 import com.example.wfc.Customer;
 import com.example.wfc.Lesson;
@@ -125,6 +126,11 @@ public class Main {
         BookingSystem bookingSystem = new BookingSystem();
 
         bookingSystem.bookLesson(customer1, lessons[2]);
+        bookingSystem.bookLesson(customer3, lessons[20]);
+        bookingSystem.bookLesson(customer4, lessons[3]);
+
+        Booking unwantedBooking = bookingSystem.getBookings().get(1);
+        bookingSystem.cancelBooking(unwantedBooking);
 
 //        for (Lesson lesson : lessons){
 //                    if(lesson.getFitnessType()==choiceType && lesson.getDay()==choiceDay
