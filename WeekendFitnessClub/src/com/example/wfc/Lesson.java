@@ -75,14 +75,15 @@ public class Lesson {
 
 
     public void viewLessonByDay(String selectedDay){
+
         if (selectedDay.equalsIgnoreCase(getDay())){
-            System.out.printf("%-10s %-10s %-10s %-10d %-10d \n", day, fitnessType, weekend, maxCapacity, availableCapacity);
+            System.out.printf("%-10s %-10s %-10s %-10d %-10d \n", day, fitnessType, weekend, availableCapacity, maxCapacity);
         }
     }
 
     public void viewLessonByFitnessType(String selectedFitnessType){
         if (selectedFitnessType.equalsIgnoreCase(getFitnessType())){
-            System.out.printf("%-10s %-10s %-10s %-10d %-10d \n", fitnessType, day, weekend, maxCapacity, availableCapacity);
+            System.out.printf("%-10s %-10s %-10s %-10d %-10d \n", fitnessType, day, weekend, availableCapacity, maxCapacity);
         }
     }
 
