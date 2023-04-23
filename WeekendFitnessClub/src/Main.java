@@ -63,6 +63,7 @@ public class Main {
 //        Lesson barreSunday4 = new Lesson("Barre", "Sunday", "Weekend 4", 5);
 //        Lesson cardioSunday4 = new Lesson("Cardio", "Sunday", "Weekend 4", 5);
 
+        BookingSystem bookingSystem = new BookingSystem();
 
 
         Lesson[] lessons = new Lesson[32];
@@ -101,7 +102,6 @@ public class Main {
         lessons[31] = new Lesson("Zumba", "Saturday", "Weekend 4", 5);
 
 
-
 //        System.out.println("Please select any option:\n");
 //        System.out.println("1. View lessons by day\n");
 //        System.out.println("2. View lessons by fitness type\n");
@@ -123,24 +123,28 @@ public class Main {
 //                break;
 //        }
 
-        BookingSystem bookingSystem = new BookingSystem();
 
         bookingSystem.bookLesson(customer1, lessons[2]);
         bookingSystem.bookLesson(customer3, lessons[20]);
         bookingSystem.bookLesson(customer4, lessons[3]);
+        bookingSystem.bookLesson(customer2, lessons[3]);
+        bookingSystem.bookLesson(customer1, lessons[3]);
 
 //        To cancel a booking
-        Booking unwantedBooking = bookingSystem.getBookings().get(1);
-        bookingSystem.cancelBooking(unwantedBooking);
+//        Booking unwantedBooking = bookingSystem.getBookings().get(1);
+//        bookingSystem.cancelBooking(unwantedBooking);
 
 //        To change a booking
-        Booking wrongBooking = bookingSystem.getBookings().get(1);
-        bookingSystem.changeBooking(wrongBooking, lessons[30]);
+//        Booking wrongBooking = bookingSystem.getBookings().get(1);
+//        bookingSystem.changeBooking(wrongBooking, lessons[30]);
 
 //        To rate
         Booking rateBooking = bookingSystem.getBookings().get(0);
         rateBooking.setAttended(true);
         bookingSystem.rateLesson(rateBooking, 4);
+        bookingSystem.rateLesson(rateBooking, 3);
+
+        bookingSystem.printFinalReport();
 
 
 //        for (Lesson lesson : lessons){

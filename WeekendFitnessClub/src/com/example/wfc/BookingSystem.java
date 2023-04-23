@@ -2,6 +2,8 @@ package com.example.wfc;
 
 import java.awt.print.Book;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 
 public class BookingSystem {
     private ArrayList<Lesson> lessonsDbArray;
@@ -44,6 +46,7 @@ public class BookingSystem {
             Booking booking = new Booking(customer, lesson);
             lesson.addBookingList(booking);
             bookingsDbArray.add(booking);
+            lessonsDbArray.add(lesson);
             System.out.println("Booking confirmed for " + customer.getName() + " on " + lesson.getDay() + " for " + lesson.getFitnessType() + ".");
         }
 
@@ -83,6 +86,28 @@ public class BookingSystem {
         } else {
             booking.setRating(rating);
             System.out.println("Thank you for your response.");
+        }
+    }
+
+    public void printFinalReport(){
+        System.out.println("Lesson Report");
+        for (Lesson lesson : lessonsDbArray) {
+            System.out.println("Lesson: " + lesson.getFitnessType() + ", Day: " + lesson.getDay());
+            System.out.println("Number of Customers: " + lesson.getBookingList().size());
+            int totalRating = 0;
+            int ratedBookings = 0;
+            for (Booking booking : lesson.getBookingList()) {
+                if (booking.getRating() > 0) {
+                    totalRating += booking.getRating();
+                    ratedBookings++;
+                }
+            }
+            if (ratedBookings > 0) {
+                double avgRating = (double) totalRating / ratedBookings;
+                System.out.println("Average Rating: " + avgRating);
+            } else {
+                System.out.println("Average Rating: N/A");
+            }
         }
     }
 
