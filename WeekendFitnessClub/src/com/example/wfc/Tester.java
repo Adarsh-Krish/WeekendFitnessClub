@@ -5,6 +5,7 @@ import com.example.wfc.BookingSystem;
 import com.example.wfc.Customer;
 import com.example.wfc.Lesson;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Tester {
@@ -98,12 +99,70 @@ public class Tester {
 
                 case 3:
                     // Book a Lesson
-                    System.out.println("case 3");
+                    System.out.print("Enter customer full name: ");
+                    String customerName = scanner.nextLine();
+                    System.out.print("Enter lesson name: ");
+                    String lessonName = scanner.nextLine().trim();
+                    System.out.print("Enter the day (Saturday/Sunday): ");
+                    String lessonDay = scanner.nextLine().trim();
+                    System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+                    String lessonWeekend = scanner.nextLine().trim();
+
+                    // validate if customer and lesson are part of database
+                    Customer isCustomer = null;
+                    for (Customer c : new Customer[]{customer1, customer2, customer3, customer4, customer5}) {
+                        if (c.getName().equalsIgnoreCase(customerName)) {
+                            isCustomer = c;
+                            break;
+                        }
+                    }
+
+                    Lesson isLesson = null;
+                    for (Lesson l : lessons) {
+                        if (l.getFitnessType().equalsIgnoreCase(lessonName) && l.getDay().equalsIgnoreCase(lessonDay)
+                                && l.getWeekend().equalsIgnoreCase(lessonWeekend)) {
+                            isLesson = l;
+                            break;
+                        }
+                    }
+
+                    // book lesson if customer and lesson are valid
+                    if (isCustomer != null && isLesson != null) {
+                        bookingSystem.bookLesson(isCustomer, isLesson);
+                    } else {
+                        System.out.println("Invalid customer or lesson.");
+                    }
                     break;
 
                 case 4:
-                    // View Report
-                    System.out.println("case 4");
+                    System.out.print("Enter customer full name: ");
+                    String customerNameToCancel = scanner.nextLine();
+                    System.out.print("Enter lesson name: ");
+                    String lessonNameToCancel = scanner.nextLine().trim();
+                    System.out.print("Enter the day (Saturday/Sunday): ");
+                    String lessonDayToCancel = scanner.nextLine().trim();
+                    System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+                    String lessonWeekendToCancel = scanner.nextLine().trim();
+                    // Cancel Booking
+                    Lesson isLessonToCancel = null;
+                    for (Lesson l : lessons) {
+                        if (l.getFitnessType().equalsIgnoreCase(lessonNameToCancel) && l.getDay().equalsIgnoreCase(lessonDayToCancel)
+                                && l.getWeekend().equalsIgnoreCase(lessonWeekendToCancel)) {
+                            isLessonToCancel = l;
+                            break;
+                        }
+                    }
+                    if (isLessonToCancel != null) {
+                        int index = bookingSystem.getBookingIndex(customerNameToCancel, lessonNameToCancel,lessonDayToCancel, lessonWeekendToCancel );
+                        if (index != -1) {
+                            Booking unwantedBooking = bookingSystem.getBookings().get(index);
+                            bookingSystem.cancelBooking(unwantedBooking);
+                        } else {
+                            System.out.println("Booking not found.");
+                        }
+                    } else {
+                        System.out.println("Invalid customer or lesson.");
+                    }
                     break;
 
                 case 5:
@@ -118,7 +177,7 @@ public class Tester {
 
                 case 7:
                     // View Report
-                    System.out.println("case 4");
+                    bookingSystem.printFinalReport();
                     break;
 
                 case 8:

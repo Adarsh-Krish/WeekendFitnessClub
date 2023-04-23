@@ -20,6 +20,18 @@ public class BookingSystem {
         return bookingsDbArray;
     }
 
+    public int getBookingIndex(String customerName, String lessonName, String lessonDay, String lessonWeekend) {
+        for (int i = 0; i < bookingsDbArray.size(); i++) {
+            Booking booking = bookingsDbArray.get(i);
+            if (booking.getCustomer().getName().equalsIgnoreCase(customerName) && booking.getLesson().getFitnessType().equalsIgnoreCase(lessonName)
+                    && booking.getLesson().getDay().equalsIgnoreCase(lessonDay) && booking.getLesson().getWeekend().equalsIgnoreCase(lessonWeekend)) {
+                return i;
+            }
+        }
+        return -1; // return -1 if the booking is not found
+    }
+
+
     public ArrayList<Customer> getCustomers() {
         return customersDbArray;
     }
