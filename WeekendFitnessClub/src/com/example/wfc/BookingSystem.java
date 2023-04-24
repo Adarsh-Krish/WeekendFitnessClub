@@ -31,6 +31,18 @@ public class BookingSystem {
         return -1; // return -1 if the booking is not found
     }
 
+    public void viewBookingDb(){
+        for (int i = 0; i < bookingsDbArray.size(); i++) {
+            System.out.println("Name: "+bookingsDbArray.get(i).getCustomer().getName());
+            System.out.println("Email: "+bookingsDbArray.get(i).getCustomer().getEmail());
+
+            System.out.println("Lesson: "+bookingsDbArray.get(i).getLesson().getFitnessType());
+            System.out.println("Day: "+bookingsDbArray.get(i).getLesson().getDay());
+            System.out.println("Weekend: "+bookingsDbArray.get(i).getLesson().getWeekend());
+            System.out.println("maxCapacity: "+bookingsDbArray.get(i).getLesson().getMaxCapacity());
+        }
+    }
+
 
     public ArrayList<Customer> getCustomers() {
         return customersDbArray;
