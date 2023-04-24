@@ -8,7 +8,7 @@ public class Lesson {
     private String weekend;
     private int maxCapacity;
 
-    private int availableCapacity = 0;
+    private int availableCapacity;
 
     private ArrayList<Booking> bookingList;
 
@@ -17,6 +17,7 @@ public class Lesson {
         this.day = day;
         this.weekend = weekend;
         this.maxCapacity = maxCapacity;
+        this.availableCapacity = maxCapacity;
         this.bookingList = new ArrayList<>();
     }
 
@@ -48,8 +49,7 @@ public class Lesson {
         return bookingList.size() >= maxCapacity;
     }
 
-    public void addBookingList(Booking booking){
-        bookingList.add(booking);
+    public void addBookingList(Booking booking){        bookingList.add(booking);
     }
 
     public void removeBookingList(Booking booking){

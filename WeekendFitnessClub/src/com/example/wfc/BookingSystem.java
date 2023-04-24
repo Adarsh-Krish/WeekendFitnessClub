@@ -40,6 +40,7 @@ public class BookingSystem {
             System.out.println("Day: "+bookingsDbArray.get(i).getLesson().getDay());
             System.out.println("Weekend: "+bookingsDbArray.get(i).getLesson().getWeekend());
             System.out.println("maxCapacity: "+bookingsDbArray.get(i).getLesson().getMaxCapacity());
+            System.out.println("rating: "+bookingsDbArray.get(i).getRating());
         }
     }
 
@@ -105,11 +106,21 @@ public class BookingSystem {
 
 
     public void rateLesson(Booking booking, int rating){
+//        *****************************************************************************
+//        *****************************************************************************
+//            TRIAL:  Changing all isAttended to true
+        booking.setAttended(true);
+//        *****************************************************************************
+//        *****************************************************************************
+
+
+
+
         if (!booking.isAttended()){
             System.out.println("You cannot rate a lesson that you have not attended.");
         } else {
             booking.setRating(rating);
-            System.out.println("Thank you for your response.");
+            System.out.println("Thank you for your response on the lesson "+booking.getLesson().getFitnessType());
         }
     }
 

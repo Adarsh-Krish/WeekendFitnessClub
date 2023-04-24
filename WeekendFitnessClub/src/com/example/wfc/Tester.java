@@ -74,6 +74,9 @@ public class Tester {
             System.out.println("9. view bookingDbArrayay");
             int customerChoice = scanner.nextInt();
             scanner.nextLine();
+            /* todo
+            *   make customer name common to all cases
+            * */
 
             switch (customerChoice) {
                 case 1:
@@ -188,8 +191,6 @@ public class Tester {
 //                        ************************************************************************
 //                        ************************************************************************
 //                    Booking new Lesson
-                    System.out.print("Enter new customer full name: ");
-                    String newCustomerName = scanner.nextLine();
                     System.out.print("Enter new lesson name: ");
                     String newLessonName = scanner.nextLine().trim();
                     System.out.print("Enter the new day (Saturday/Sunday): ");
@@ -207,12 +208,7 @@ public class Tester {
                         }
                     }
 
-//                    // book lesson if customer and lesson are valid
-//                    if (isNewCustomer != null && newBookingLesson != null) {
-//                        bookingSystem.bookLesson(isNewCustomer, newBookingLesson);
-//                    } else {
-//                        System.out.println("Invalid customer or lesson.");
-//                    }
+
 //                        ************************************************************************
 //                        ************************************************************************
 //                        ************************************************************************
@@ -234,7 +230,36 @@ public class Tester {
 
                 case 6:
                     // Rate a lesson
-                    System.out.println("case 4");
+                    System.out.print("Enter customer full name: ");
+                    String customerNameToRate = scanner.nextLine();
+                    System.out.print("Enter lesson name you want to rate: ");
+                    String lessonNameToRate = scanner.nextLine().trim();
+                    System.out.print("Enter which day (Saturday/Sunday): ");
+                    String lessonDayToRate = scanner.nextLine().trim();
+                    System.out.print("Enter which weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+                    String lessonWeekendToRate = scanner.nextLine().trim();
+                    System.out.print("Enter rating on a scale of 1 to 5: ");
+                    int ratingByCustomer = scanner.nextInt();
+                    scanner.nextLine();
+                    Lesson isLessonToRate = null;
+                    for (Lesson l : lessons) {
+                        if (l.getFitnessType().equalsIgnoreCase(lessonNameToRate) && l.getDay().equalsIgnoreCase(lessonDayToRate)
+                                && l.getWeekend().equalsIgnoreCase(lessonWeekendToRate)) {
+                            isLessonToRate = l;
+                            break;
+                        }
+                    }
+                    if (isLessonToRate != null) {
+                        int index = bookingSystem.getBookingIndex(customerNameToRate, lessonNameToRate,lessonDayToRate, lessonWeekendToRate );
+                        if (index != -1) {
+                            Booking bookingToRate = bookingSystem.getBookings().get(index);
+                            bookingSystem.rateLesson(bookingToRate, ratingByCustomer);
+                        } else {
+                            System.out.println("Booking not found.");
+                        }
+                    } else {
+                        System.out.println("Invalid customer or lesson.");
+                    }
                     break;
 
                 case 7:
