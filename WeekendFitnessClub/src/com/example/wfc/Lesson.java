@@ -49,11 +49,15 @@ public class Lesson {
         return bookingList.size() >= maxCapacity;
     }
 
-    public void addBookingList(Booking booking){        bookingList.add(booking);
+    public void addBookingList(Booking booking){
+        bookingList.add(booking);
+        availableCapacity--;
     }
 
     public void removeBookingList(Booking booking){
         bookingList.remove(booking);
+        availableCapacity++;
+
     }
 
 //    public void increaseAvailableCapacity(){
