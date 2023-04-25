@@ -236,6 +236,10 @@ public class MainMenu {
         bookingSystem.printMonthlyLessonReport(1);
     }
 
+    public void  viewChampionReportMainMenu() {
+        bookingSystem.printChampionReport(1);
+    }
+
 
     public void viewBookingDBArray(){
         bookingSystem.viewBookingDb();
@@ -380,7 +384,7 @@ public class MainMenu {
                     break;
 
                 case 2:
-
+                    viewChampionReportMainMenu();
                     break;
 
                 case 3:
