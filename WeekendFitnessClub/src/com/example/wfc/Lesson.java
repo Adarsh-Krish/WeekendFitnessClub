@@ -46,6 +46,14 @@ public class Lesson {
         return bookingList;
     }
 
+    public void getTheThingsForReport(){
+        String customerNumber;
+        if (bookingList.contains(getFitnessType()) && bookingList.equals("Yoga")){
+
+        }
+
+    }
+
     public boolean isBookingFull() {
         return bookingList.size() >= price;
     }
@@ -92,5 +100,24 @@ public class Lesson {
         }
     }
 
+
+//    public int getCustomerNumberFromDayAndName(String dayToFind, String nameToFind){
+//
+//        if (fitnessType.equalsIgnoreCase(nameToFind) && day.equalsIgnoreCase(dayToFind)) {
+//                return 1;
+//            } else {
+//            return 0;
+//
+//        }
+////        else if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Spin")) {
+////                customerInSpin++;
+////            } else if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Pilates")) {
+////                customerInPilates++;
+////            } else if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Crossfit")) {
+////                customerInCrossfit++;
+////            } else if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Boxing")) {
+////                customerInBoxing++;
+////            }
+//    }
 
 }

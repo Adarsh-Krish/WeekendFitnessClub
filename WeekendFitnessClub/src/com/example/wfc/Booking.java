@@ -7,7 +7,7 @@ public class Booking {
     private boolean attended;
     private int rating;
 
-    public Booking(Customer customer, Lesson lesson){
+    public Booking(Customer customer, Lesson lesson) {
         this.customer = customer;
         this.lesson = lesson;
         this.attended = false;
@@ -24,6 +24,7 @@ public class Booking {
     public boolean isAttended() {
         return attended;
     }
+
     public void setAttended(boolean attended) {
         this.attended = attended;
     }
@@ -38,5 +39,22 @@ public class Booking {
 
     public int getRating() {
         return rating;
+    }
+
+    public double getAverageRating() {
+        int totalRating = 0;
+        int ratedBookings = 0;
+        for (int i =0; i< lesson.getBookingList().size(); i++) {
+            if (rating > 0) {
+                totalRating += rating;
+                ratedBookings++;
+            }
+        }
+            if (ratedBookings > 0) {
+                return (double) totalRating / ratedBookings;
+            } else {
+                return 0;
+            }
+
     }
 }

@@ -1,18 +1,16 @@
 package com.example.wfc;
 
 import java.awt.print.Book;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
+import java.util.*;
 
 public class BookingSystem {
-    private ArrayList<Lesson> lessonsDbArray;
-    private ArrayList<Customer> customersDbArray;
+    private HashMap<String, Integer> lessonsDbArrayNumberofCustomer;
+    private HashMap<String, Customer> customersDbArray;
     private ArrayList<Booking> bookingsDbArray;
 
     public BookingSystem() {
-        lessonsDbArray = new ArrayList<>();
-        customersDbArray = new ArrayList<>();
+        lessonsDbArrayNumberofCustomer = new HashMap<>();
+        customersDbArray = new HashMap<>();
         bookingsDbArray = new ArrayList<>();
     }
 
@@ -46,26 +44,69 @@ public class BookingSystem {
         } else System.out.println("Nothing in array");
 
     }
+    public void viewCustomerDb(){
+        if (customersDbArray.size() != 0){
+            for (int i = 0; i < customersDbArray.size(); i++) {
+                System.out.println("Name: "+customersDbArray.get(i).getName());
+                System.out.println("Email: "+customersDbArray.get(i).getEmail());
+            }
+        } else System.out.println("Nothing in Customer array");
 
+    }
+    public void viewLessonDb(){
+        for (String i: lessonsDbArrayNumberofCustomer.keySet()) {
+//            System.out.println("key: " + i + " value: " + lessonsDbArrayNumberofCustomer.get(i));lessonsDbArrayNumberofCustomer
+            lessonsDbArrayNumberofCustomer.get(i) =
+        }
 
-    public ArrayList<Customer> getCustomers() {
+        
+        
+//        if (lessonsDbArray.size() != 0){
+//            for (int i = 0; i < lessonsDbArray.size(); i++) {
+//                System.out.println("Lesson: "+lessonsDbArray.get(i).getFitnessType());
+//                System.out.println("Day: "+lessonsDbArray.get(i).getDay());
+//                System.out.println("Weekend: "+lessonsDbArray.get(i).getWeekend());
+//                System.out.println("availableCapacity: "+lessonsDbArray.get(i).getAvailableCapacity());
+//            }
+//        } else System.out.println("Nothing in Lesson array");
+
+    }
+    public void viewBookingList(){
+        
+        if (bookingsDbArray.size() != 0){
+            for (int i = 0; i < bookingsDbArray.size(); i++) {
+                    System.out.println("bookingList: "+bookingsDbArray.get(i).getLesson().getBookingList().get(i).toString());
+
+//                System.out.println("Email: "+bookingsDbArray.get(i).getCustomer().getEmail());
+//
+//                System.out.println("Lesson: "+bookingsDbArray.get(i).getLesson().getFitnessType());
+//                System.out.println("Day: "+bookingsDbArray.get(i).getLesson().getDay());
+//                System.out.println("Weekend: "+bookingsDbArray.get(i).getLesson().getWeekend());
+//                System.out.println("availableCapacity: "+bookingsDbArray.get(i).getLesson().getAvailableCapacity());
+//                System.out.println("rating: "+bookingsDbArray.get(i).getRating());
+            }
+        } else System.out.println("Nothing in array");
+
+    }
+
+    public HashMap<String, Customer> getCustomers() {
         return customersDbArray;
     }
 
-    public ArrayList<Lesson> getLessons() {
-        return lessonsDbArray;
-    }
+//    public HashMap<String, Lesson> getLessons() {
+//        return lessonsDbArray;
+//    }
 
 
     //    Function to add a customer
-    public void addCustomer(Customer customer) {
-        customersDbArray.add(customer);
-    }
+//    public void addCustomerToCustomerDbArray(Customer customer) {
+//        customersDbArray.add(customer);
+//    }
 
     //    Function to add a Lesson
-    public void addLesson(Lesson lesson) {
-        lessonsDbArray.add(lesson);
-    }
+//    public void addLesson(Lesson lesson) {
+//        lessonsDbArray.add(lesson);
+//    }
 
     public void bookLesson(Customer customer, Lesson lesson) {
         if (lesson.isBookingFull()) {
@@ -77,8 +118,23 @@ public class BookingSystem {
             } else if (lesson.getAvailableCapacity() > 0) {
                 lesson.addBookingList(booking);
                 bookingsDbArray.add(booking);
-                lessonsDbArray.add(lesson);
                 System.out.println("Booking confirmed for " + customer.getName() + " on " + lesson.getDay() + " for " + lesson.getFitnessType() + ".");
+                if (booking.getLesson().getFitnessType().equalsIgnoreCase("Yoga")){
+                    lessonsDbArray.put("Yoga",booking.getLesson());
+                } else if (booking.getLesson().getFitnessType().equalsIgnoreCase("Spin")){
+                    lessonsDbArray.put("Spin",booking.getLesson());
+
+                }else if (booking.getLesson().getFitnessType().equalsIgnoreCase("Pilates")){
+                    lessonsDbArray.put("Pilates",booking.getLesson());
+
+                }else if (booking.getLesson().getFitnessType().equalsIgnoreCase("Boxing")){
+                    lessonsDbArray.put("Boxing",booking.getLesson());
+
+                }else if (booking.getLesson().getFitnessType().equalsIgnoreCase("Crossfit")){
+                    lessonsDbArray.put("Crossfit",booking.getLesson());
+
+                }
+
             }
 
         }
@@ -133,6 +189,13 @@ public class BookingSystem {
     }
 
     public void printFinalReport() {
+
+
+
+
+
+
+
 //        System.out.println("Lesson Report");
 //        int customerInYoga = 0, customerInSpin = 0, customerInPilates = 0, customerInCrossfit = 0, customerInBoxing = 0;
 //        int ratingFromDb = 0, countOfRating = 0;

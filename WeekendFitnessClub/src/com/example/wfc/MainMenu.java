@@ -232,13 +232,22 @@ public class MainMenu {
 
 
 
-    public void  viewReportMainMenu() {
+    public void  viewMonthlyReportMainMenu() {
         bookingSystem.printFinalReport();
     }
 
 
     public void viewBookingDBArray(){
         bookingSystem.viewBookingDb();
+    }
+    public void viewCustomerDBArray(){
+        bookingSystem.viewCustomerDb();
+    }
+    public void viewLessonDBArray(){
+        bookingSystem.viewLessonDb();
+    }
+    public void viewBookingList(){
+        bookingSystem.viewBookingList();
     }
 
 
@@ -376,7 +385,7 @@ public class MainMenu {
 
             switch (customerChoice) {
                 case 1:
-                    viewReportMainMenu();
+                    viewMonthlyReportMainMenu();
                     break;
 
                 case 2:
@@ -425,11 +434,12 @@ public void mainMenuWFC(){
             System.out.println("4. Display report");
             System.out.println("5. Exit WFC");
             System.out.println("6. view bookingDbArrayay");
+            System.out.println("7. view CustomerDbArrayay");
+            System.out.println("8. view LessonDbArrayay");
+            System.out.println("9. view bookingList");
             int customerChoice = scanner.nextInt();
             scanner.nextLine();
-            /* todo
-             *   make customer name common to all cases
-             * */
+
 
             switch (customerChoice) {
                 case 1:
@@ -459,6 +469,18 @@ public void mainMenuWFC(){
                 case 6:
                     // View db
                     viewBookingDBArray();
+                    break;
+                    case 7:
+                    // View db
+                    viewCustomerDBArray();
+                    break;
+                    case 8:
+                    // View db
+                    viewLessonDBArray();
+                    break;
+                    case 9:
+                    // View db
+                    viewBookingList();
                     break;
 
                 default:
