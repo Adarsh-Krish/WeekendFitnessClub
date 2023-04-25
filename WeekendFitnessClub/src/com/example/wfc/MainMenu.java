@@ -43,9 +43,9 @@ public class MainMenu {
     public void bookLessonMainMenu(){
 //        System.out.print("Enter customer full name: ");
 //                    String customerName = scanner.nextLine();
-        System.out.print("Enter lesson name: ");
+        System.out.print("\nEnter Fitness Types (Yoga/Spin/Pilates/Crossfit/Boxing) ");
         String lessonName = scanner.nextLine().trim();
-        System.out.print("Enter the day (Saturday/Sunday): ");
+        System.out.print("Enter the day (Saturday/Sunday) ");
         String lessonDay = scanner.nextLine().trim();
         System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
         String lessonWeekend = scanner.nextLine().trim();
@@ -77,11 +77,11 @@ public class MainMenu {
     }
 
     public void cancelLessonMainMenu() {
-        System.out.print("Enter lesson name: ");
+        System.out.print("\nEnter Fitness Types (Yoga/Spin/Pilates/Crossfit/Boxing) ");
         String lessonNameToCancel = scanner.nextLine().trim();
-        System.out.print("Enter the day (Saturday/Sunday): ");
+        System.out.print("Enter the day (Saturday/Sunday) ");
         String lessonDayToCancel = scanner.nextLine().trim();
-        System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4) ");
         String lessonWeekendToCancel = scanner.nextLine().trim();
         Lesson isLessonToCancel = null;
         for (Lesson l : lessons) {
@@ -106,11 +106,11 @@ public class MainMenu {
 
 
     public void changeLessonMainMenu() {
-        System.out.print("Enter lesson name: ");
+        System.out.print("\nEnter Fitness Types (Yoga/Spin/Pilates/Crossfit/Boxing) ");
         String lessonNameToChange = scanner.nextLine().trim();
-        System.out.print("Enter the day (Saturday/Sunday): ");
+        System.out.print("Enter the day (Saturday/Sunday) ");
         String lessonDayToChange = scanner.nextLine().trim();
-        System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4) ");
         String lessonWeekendToChange = scanner.nextLine().trim();
         Lesson isLessonToChange = null;
         for (Lesson l : lessons) {
@@ -122,11 +122,11 @@ public class MainMenu {
         }
 
 //                    Booking new Lesson
-        System.out.print("Enter new lesson name: ");
+        System.out.print("\nEnter new Fitness Types (Yoga/Spin/Pilates/Crossfit/Boxing) ");
         String newLessonName = scanner.nextLine().trim();
-        System.out.print("Enter the new day (Saturday/Sunday): ");
+        System.out.print("Enter the new day (Saturday/Sunday) ");
         String newLessonDay = scanner.nextLine().trim();
-        System.out.print("Enter the new weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        System.out.print("Enter the new weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4) ");
         String newLessonWeekend = scanner.nextLine().trim();
 
 
@@ -153,11 +153,11 @@ public class MainMenu {
 
 
     public void  rateLessonMainMenu() {
-        System.out.print("Enter lesson name you want to rate: ");
+        System.out.print("\nEnter Fitness Types (Yoga/Spin/Pilates/Crossfit/Boxing) ");
         String lessonNameToRate = scanner.nextLine().trim();
-        System.out.print("Enter which day (Saturday/Sunday): ");
+        System.out.print("Enter which day (Saturday/Sunday) ");
         String lessonDayToRate = scanner.nextLine().trim();
-        System.out.print("Enter which weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        System.out.print("Enter which weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4) ");
         String lessonWeekendToRate = scanner.nextLine().trim();
         System.out.print("Enter rating on a scale of 1 to 5: ");
         int ratingByCustomer = scanner.nextInt();
@@ -185,7 +185,7 @@ public class MainMenu {
     }
 
     public void attendLesson(){
-        System.out.print("Enter lesson name you want to attend: ");
+        System.out.print("\nEnter Fitness Types you want to attend (Yoga/Spin/Pilates/Crossfit/Boxing) ");
         String lessonNameToAttend = scanner.nextLine().trim();
         System.out.print("Enter which day (Saturday/Sunday): ");
         String lessonDayToAttend = scanner.nextLine().trim();
@@ -232,7 +232,7 @@ public class MainMenu {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("Options for Booking\n");
+            System.out.println("\nOptions for Booking");
 
             System.out.println("Please select any option:");
             System.out.println("1. View lessons by day");
@@ -272,7 +272,7 @@ public class MainMenu {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("Options to Update Booking\n");
+            System.out.println("\nOptions to Update Booking");
 
             System.out.println("Please select any option:");
             System.out.println("1. Change booking");
@@ -311,12 +311,12 @@ public class MainMenu {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("Options to Attend Lesson\n");
+            System.out.println("\nOptions to Attend Lesson");
 
             System.out.println("Please select any option:");
-            System.out.println("1. Attend Lesson");
+            System.out.println("1. Attend");
             System.out.println("2. Rate a Lesson");
-            System.out.println("3. Go to main menu");
+            System.out.println("3. Go to main menu\n");
             int customerChoice = scanner.nextInt();
             scanner.nextLine();
 
@@ -347,12 +347,12 @@ public class MainMenu {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("Options to View Report\n");
+            System.out.println("\nOptions to View Report");
 
             System.out.println("Please select any option:");
             System.out.println("1. View Monthly Report");
             System.out.println("2. View Champion of the month");
-            System.out.println("3. Go to main menu");
+            System.out.println("3. Go to main menu\n");
             int customerChoice = scanner.nextInt();
             scanner.nextLine();
 
@@ -393,7 +393,7 @@ public class MainMenu {
         if (isCustomerInDb != null) {
             commonUserName = userName;
 
-            System.out.println("Hii " + commonUserName.toUpperCase() + "! Welcome to Weekend Fitness Club.");
+            System.out.println("Hii " + commonUserName.toUpperCase() + "! Welcome to Weekend Fitness Club.\n");
 
             boolean exit = false;
 
@@ -403,7 +403,7 @@ public class MainMenu {
                 System.out.println("2. Update your booking");
                 System.out.println("3. Attend a lesson");
                 System.out.println("4. Display report");
-                System.out.println("5. Exit WFC");
+                System.out.println("5. Exit WFC\n");
                 int customerChoice = scanner.nextInt();
                 scanner.nextLine();
 
