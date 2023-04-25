@@ -100,6 +100,12 @@ public class Lesson {
         }
     }
 
+//    public int getMonth(int monthNumber) {
+//        if (monthNumber == 1){
+//            return
+//        }
+//    }
+
 
 //    public int getCustomerNumberFromDayAndName(String dayToFind, String nameToFind){
 //

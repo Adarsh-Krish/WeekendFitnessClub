@@ -41,20 +41,4 @@ public class Booking {
         return rating;
     }
 
-    public double getAverageRating() {
-        int totalRating = 0;
-        int ratedBookings = 0;
-        for (int i =0; i< lesson.getBookingList().size(); i++) {
-            if (rating > 0) {
-                totalRating += rating;
-                ratedBookings++;
-            }
-        }
-            if (ratedBookings > 0) {
-                return (double) totalRating / ratedBookings;
-            } else {
-                return 0;
-            }
-
-    }
 }
