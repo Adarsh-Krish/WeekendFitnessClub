@@ -1,29 +1,17 @@
 package com.example.wfc;
 
-import com.example.wfc.Booking;
-import com.example.wfc.BookingSystem;
-import com.example.wfc.Customer;
-import com.example.wfc.Lesson;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Tester {
     public static void main(String[] args) {
         System.out.println("Welcome to Weekend Fitness Club!");
 
-        Scanner scanner = new Scanner(System.in);
-
-
         Customer customer1 = new Customer("John Smith", "john@gmail.com");
         Customer customer2 = new Customer("Sarah Johnson", "sarah@gmail.com");
         Customer customer3 = new Customer("Mark Davis", "mark@gmail.com");
         Customer customer4 = new Customer("Emily Brown", "emily@gmail.com");
         Customer customer5 = new Customer("David Lee", "david@gmail.com");
-//
-//        BookingSystem bookingSystem = new BookingSystem();
-//
-//
+
         Lesson[] lessons = new Lesson[32];
 
         lessons[0] = new Lesson("Yoga", "Saturday", "Weekend 1", 5);
@@ -60,86 +48,9 @@ public class Tester {
         lessons[31] = new Lesson("Boxing", "Saturday", "Weekend 4", 5);
 
 
-        boolean exit = false;
         MainMenu mainMenu = new MainMenu(customer1, customer2, customer3, customer4, customer5, lessons);
 
-
-        while (!exit) {
-            System.out.println("Please select any option:");
-            System.out.println("1. View lessons by day");
-            System.out.println("2. View lessons by fitness type");
-            System.out.println("3. Book a lesson");
-            System.out.println("4. Cancel a booking");
-            System.out.println("5. Change a booking");
-            System.out.println("6. Rate a lesson");
-            System.out.println("7. View report");
-            System.out.println("8. Exit WFC");
-            System.out.println("9. view bookingDbArrayay");
-            int customerChoice = scanner.nextInt();
-            scanner.nextLine();
-            /* todo
-            *   make customer name common to all cases
-            * */
-
-            switch (customerChoice) {
-                case 1:
-                    // View lessons by day
-                    mainMenu.viewMenuByDay();
-                    break;
-
-                case 2:
-                    // View lessons by fitness type
-                    mainMenu.viewMenuByFitnessType();
-                    break;
-//
-                case 3:
-//                    // Book a Lesson
-                    mainMenu.bookLessonMainMenu();
-                    break;
-//
-                case 4:
-//                    // Cancel Booking
-                    mainMenu.cancelLessonMainMenu();
-                    break;
-//
-                case 5:
-//                    // Change booking
-                    mainMenu.changeLessonMainMenu();
-                    break;
-//
-                case 6:
-//                    // Rate a lesson
-                    mainMenu.rateLessonMainMenu();
-                    break;
-//
-                case 7:
-//                    // View Report
-//                    bookingSystem.printFinalReport();
-                    mainMenu.viewReportMainMenu();
-                    break;
-//
-//
-                case 8:
-//                    // View Report
-                    System.out.println("Bye. See you later.");
-                    return;
-//
-                case 9:
-//                    // View Report'
-                    mainMenu.viewBookingDBArray();
-                    break;
-
-                default:
-                    System.out.println("Invalid choice. Please enter a number from 1 to 8.");
-                    break;
-            }
-
-            System.out.print("Do you want to continue (y/n)?: ");
-            String continueChoice = scanner.nextLine().trim();
-            if (!continueChoice.equalsIgnoreCase("y")) {
-                exit = true;
-            }
-        }
+        mainMenu.mainMenuWFC();
 
 
 
@@ -171,7 +82,7 @@ public class Tester {
 
 
 
-//        System.out.println("Please select any option:");
+//   System.out.println("Please select any option:");
 //        System.out.println("1. View lessons by day");
 //        System.out.println("2. View lessons by fitness type");
 //        System.out.println("3. Write a Review");
