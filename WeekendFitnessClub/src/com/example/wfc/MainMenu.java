@@ -43,165 +43,148 @@ public class MainMenu {
     public void bookLessonMainMenu(){
 //        System.out.print("Enter customer full name: ");
 //                    String customerName = scanner.nextLine();
-                    System.out.print("Enter lesson name: ");
-                    String lessonName = scanner.nextLine().trim();
-                    System.out.print("Enter the day (Saturday/Sunday): ");
-                    String lessonDay = scanner.nextLine().trim();
-                    System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String lessonWeekend = scanner.nextLine().trim();
+        System.out.print("Enter lesson name: ");
+        String lessonName = scanner.nextLine().trim();
+        System.out.print("Enter the day (Saturday/Sunday): ");
+        String lessonDay = scanner.nextLine().trim();
+        System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        String lessonWeekend = scanner.nextLine().trim();
 
-                    // validate if customer and lesson are part of database
-                    Customer isCustomer = null;
-                    for (Customer c : new Customer[]{customer1, customer2, customer3, customer4, customer5}) {
-                        if (c.getName().equalsIgnoreCase(commonUserName)) {
-                            isCustomer = c;
-                            break;
-                        }
-                    }
+        // validate if customer and lesson are part of database
+        Customer isCustomer = null;
+        for (Customer c : new Customer[]{customer1, customer2, customer3, customer4, customer5}) {
+            if (c.getName().equalsIgnoreCase(commonUserName)) {
+                isCustomer = c;
+                break;
+            }
+        }
 
-                    Lesson isLesson = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(lessonName) && l.getDay().equalsIgnoreCase(lessonDay)
-                                && l.getWeekend().equalsIgnoreCase(lessonWeekend)) {
-                            isLesson = l;
-                            break;
-                        }
-                    }
+        Lesson isLesson = null;
+        for (Lesson l : lessons) {
+            if (l.getFitnessType().equalsIgnoreCase(lessonName) && l.getDay().equalsIgnoreCase(lessonDay)
+                    && l.getWeekend().equalsIgnoreCase(lessonWeekend)) {
+                isLesson = l;
+                break;
+            }
+        }
 
-                    // book lesson if customer and lesson are valid
-                    if (isCustomer != null && isLesson != null) {
-                        bookingSystem.bookLesson(isCustomer, isLesson);
-                    } else {
-                        System.out.println("Invalid customer or lesson.");
-                    }
+        // book lesson if customer and lesson are valid
+        if (isCustomer != null && isLesson != null) {
+            bookingSystem.bookLesson(isCustomer, isLesson);
+        } else {
+            System.out.println("Invalid customer or lesson.");
+        }
     }
 
-    public void cancelLessonMainMenu(){
-//        System.out.print("Enter customer full name: ");
-//                    String customerNameToCancel = scanner.nextLine();
-                    System.out.print("Enter lesson name: ");
-                    String lessonNameToCancel = scanner.nextLine().trim();
-                    System.out.print("Enter the day (Saturday/Sunday): ");
-                    String lessonDayToCancel = scanner.nextLine().trim();
-                    System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String lessonWeekendToCancel = scanner.nextLine().trim();
-                    Lesson isLessonToCancel = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(lessonNameToCancel) && l.getDay().equalsIgnoreCase(lessonDayToCancel)
-                                && l.getWeekend().equalsIgnoreCase(lessonWeekendToCancel)) {
-                            isLessonToCancel = l;
-                            break;
-                        }
-                    }
-                    if (isLessonToCancel != null) {
-                        int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToCancel,lessonDayToCancel, lessonWeekendToCancel );
-                        if (index != -1) {
-                            Booking unwantedBooking = bookingSystem.getBookings().get(index);
-                            bookingSystem.cancelBooking(unwantedBooking);
-                        } else {
-                            System.out.println("Booking not found.");
-                        }
-                    } else {
-                        System.out.println("Invalid customer or lesson.");
-                    }
+    public void cancelLessonMainMenu() {
+        System.out.print("Enter lesson name: ");
+        String lessonNameToCancel = scanner.nextLine().trim();
+        System.out.print("Enter the day (Saturday/Sunday): ");
+        String lessonDayToCancel = scanner.nextLine().trim();
+        System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        String lessonWeekendToCancel = scanner.nextLine().trim();
+        Lesson isLessonToCancel = null;
+        for (Lesson l : lessons) {
+            if (l.getFitnessType().equalsIgnoreCase(lessonNameToCancel) && l.getDay().equalsIgnoreCase(lessonDayToCancel)
+                    && l.getWeekend().equalsIgnoreCase(lessonWeekendToCancel)) {
+                isLessonToCancel = l;
+                break;
+            }
+        }
+        if (isLessonToCancel != null) {
+            int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToCancel, lessonDayToCancel, lessonWeekendToCancel);
+            if (index != -1) {
+                Booking unwantedBooking = bookingSystem.getBookings().get(index);
+                bookingSystem.cancelBooking(unwantedBooking);
+            } else {
+                System.out.println("Booking not found.");
+            }
+        } else {
+            System.out.println("Invalid customer or lesson.");
+        }
     }
 
 
     public void changeLessonMainMenu() {
-//        System.out.print("Enter customer full name: ");
-//                    String customerNameToChange = scanner.nextLine();
-                    System.out.print("Enter lesson name: ");
-                    String lessonNameToChange = scanner.nextLine().trim();
-                    System.out.print("Enter the day (Saturday/Sunday): ");
-                    String lessonDayToChange = scanner.nextLine().trim();
-                    System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String lessonWeekendToChange = scanner.nextLine().trim();
-                    Lesson isLessonToChange = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(lessonNameToChange) && l.getDay().equalsIgnoreCase(lessonDayToChange)
-                                && l.getWeekend().equalsIgnoreCase(lessonWeekendToChange)) {
-                            isLessonToChange = l;
-                            break;
-                        }
-                    }
-//                        ************************************************************************
-//                        ************************************************************************
-//                        ************************************************************************
-//                        ************************************************************************
+        System.out.print("Enter lesson name: ");
+        String lessonNameToChange = scanner.nextLine().trim();
+        System.out.print("Enter the day (Saturday/Sunday): ");
+        String lessonDayToChange = scanner.nextLine().trim();
+        System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        String lessonWeekendToChange = scanner.nextLine().trim();
+        Lesson isLessonToChange = null;
+        for (Lesson l : lessons) {
+            if (l.getFitnessType().equalsIgnoreCase(lessonNameToChange) && l.getDay().equalsIgnoreCase(lessonDayToChange)
+                    && l.getWeekend().equalsIgnoreCase(lessonWeekendToChange)) {
+                isLessonToChange = l;
+                break;
+            }
+        }
+
 //                    Booking new Lesson
-                    System.out.print("Enter new lesson name: ");
-                    String newLessonName = scanner.nextLine().trim();
-                    System.out.print("Enter the new day (Saturday/Sunday): ");
-                    String newLessonDay = scanner.nextLine().trim();
-                    System.out.print("Enter the new weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String newLessonWeekend = scanner.nextLine().trim();
+        System.out.print("Enter new lesson name: ");
+        String newLessonName = scanner.nextLine().trim();
+        System.out.print("Enter the new day (Saturday/Sunday): ");
+        String newLessonDay = scanner.nextLine().trim();
+        System.out.print("Enter the new weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        String newLessonWeekend = scanner.nextLine().trim();
 
 
-                    Lesson newBookingLesson = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(newLessonName) && l.getDay().equalsIgnoreCase(newLessonDay)
-                                && l.getWeekend().equalsIgnoreCase(newLessonWeekend)) {
-                            newBookingLesson = l;
-                            break;
-                        }
-                    }
-
-
-//                        ************************************************************************
-//                        ************************************************************************
-//                        ************************************************************************
-//                        ************************************************************************
-                    if (isLessonToChange != null && newBookingLesson != null) {
-                        int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToChange,lessonDayToChange, lessonWeekendToChange );
-                        if (index != -1) {
-                            Booking oldBooking = bookingSystem.getBookings().get(index);
-                            bookingSystem.changeBooking(oldBooking, newBookingLesson);
-                        } else {
-                            System.out.println("Booking not found.");
-                        }
-                    } else {
-                        System.out.println("Invalid customer or lesson.");
-                    }
+        Lesson newBookingLesson = null;
+        for (Lesson l : lessons) {
+            if (l.getFitnessType().equalsIgnoreCase(newLessonName) && l.getDay().equalsIgnoreCase(newLessonDay)
+                    && l.getWeekend().equalsIgnoreCase(newLessonWeekend)) {
+                newBookingLesson = l;
+                break;
+            }
+        }
+        if (isLessonToChange != null && newBookingLesson != null) {
+            int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToChange, lessonDayToChange, lessonWeekendToChange);
+            if (index != -1) {
+                Booking oldBooking = bookingSystem.getBookings().get(index);
+                bookingSystem.changeBooking(oldBooking, newBookingLesson);
+            } else {
+                System.out.println("Booking not found.");
+            }
+        } else {
+            System.out.println("Invalid customer or lesson.");
+        }
     }
 
 
     public void  rateLessonMainMenu() {
-//        System.out.print("Enter customer full name: ");
-//                    String customerNameToRate = scanner.nextLine();
-                    System.out.print("Enter lesson name you want to rate: ");
-                    String lessonNameToRate = scanner.nextLine().trim();
-                    System.out.print("Enter which day (Saturday/Sunday): ");
-                    String lessonDayToRate = scanner.nextLine().trim();
-                    System.out.print("Enter which weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String lessonWeekendToRate = scanner.nextLine().trim();
-                    System.out.print("Enter rating on a scale of 1 to 5: ");
-                    int ratingByCustomer = scanner.nextInt();
-                    scanner.nextLine();
-                    Lesson isLessonToRate = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(lessonNameToRate) && l.getDay().equalsIgnoreCase(lessonDayToRate)
-                                && l.getWeekend().equalsIgnoreCase(lessonWeekendToRate)) {
-                            isLessonToRate = l;
-                            break;
-                        }
-                    }
-                    if (isLessonToRate != null) {
-                        int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToRate,lessonDayToRate, lessonWeekendToRate );
-                        if (index != -1) {
-                            Booking bookingToRate = bookingSystem.getBookings().get(index);
-                            bookingSystem.rateLesson(bookingToRate, ratingByCustomer);
-                        } else {
-                            System.out.println("Booking not found.");
-                        }
-                    } else {
-                        System.out.println("Invalid customer or lesson.");
-                    }
+        System.out.print("Enter lesson name you want to rate: ");
+        String lessonNameToRate = scanner.nextLine().trim();
+        System.out.print("Enter which day (Saturday/Sunday): ");
+        String lessonDayToRate = scanner.nextLine().trim();
+        System.out.print("Enter which weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
+        String lessonWeekendToRate = scanner.nextLine().trim();
+        System.out.print("Enter rating on a scale of 1 to 5: ");
+        int ratingByCustomer = scanner.nextInt();
+        scanner.nextLine();
+        Lesson isLessonToRate = null;
+        for (Lesson l : lessons) {
+            if (l.getFitnessType().equalsIgnoreCase(lessonNameToRate) && l.getDay().equalsIgnoreCase(lessonDayToRate)
+                    && l.getWeekend().equalsIgnoreCase(lessonWeekendToRate)) {
+                isLessonToRate = l;
+                break;
+            }
+        }
+        if (isLessonToRate != null) {
+            int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToRate, lessonDayToRate, lessonWeekendToRate);
+            if (index != -1) {
+                Booking bookingToRate = bookingSystem.getBookings().get(index);
+                bookingSystem.rateLesson(bookingToRate, ratingByCustomer);
+            } else {
+                System.out.println("Booking not found.");
+            }
+        } else {
+            System.out.println("Invalid customer or lesson.");
+        }
 
     }
 
     public void attendLesson(){
-//        System.out.print("Enter customer full name: ");
-//        String customerNameToAttend = scanner.nextLine();
         System.out.print("Enter lesson name you want to attend: ");
         String lessonNameToAttend = scanner.nextLine().trim();
         System.out.print("Enter which day (Saturday/Sunday): ");
@@ -238,11 +221,6 @@ public class MainMenu {
 
     public void  viewChampionReportMainMenu() {
         bookingSystem.printChampionReport(1);
-    }
-
-
-    public void viewBookingDBArray(){
-        bookingSystem.viewBookingDb();
     }
 
 
@@ -401,83 +379,74 @@ public class MainMenu {
     }
 
 
+    public void mainMenuWFC() {
 
-
-public void mainMenuWFC(){
-
-    System.out.println("Please enter you full name");
-    String userName = scanner.nextLine();
-    Customer isCustomerInDb = null;
-    for (Customer c : new Customer[]{customer1, customer2, customer3, customer4, customer5}) {
-        if (c.getName().equalsIgnoreCase(userName)) {
-            isCustomerInDb = c;
-            break;
-        }
-    }
-    if (isCustomerInDb != null) {
-        commonUserName = userName;
-
-        System.out.println("Hii "+commonUserName.toUpperCase()+"! Welcome to Weekend Fitness Club.");
-
-        boolean exit = false;
-
-        while (!exit) {
-            System.out.println("Please select any option:");
-            System.out.println("1. Booking a lesson");
-            System.out.println("2. Update your booking");
-            System.out.println("3. Attend a lesson");
-            System.out.println("4. Display report");
-            System.out.println("5. Exit WFC");
-            System.out.println("6. view bookingDbArray");
-            int customerChoice = scanner.nextInt();
-            scanner.nextLine();
-
-
-            switch (customerChoice) {
-                case 1:
-                    // View lessons by day
-                    bookLessonWFC();
-                    break;
-
-                case 2:
-                    // View lessons by fitness type
-                    updateBookingWFC();
-                    break;
-
-                case 3:
-                    // Book a Lesson
-                    attendLessonWFC();
-                    break;
-
-                case 4:
-                    // Cancel Booking
-                    displayReportWFC();
-                    break;
-
-                case 5:
-                    System.out.println("Bye. See you later.");
-                    return;
-
-                case 6:
-                    // View db
-                    viewBookingDBArray();
-                    break;
-
-                default:
-                    System.out.println("Invalid choice. Please enter a number from 1 to 8.");
-                    break;
-            }
-
-            System.out.print("Continue Main Menu (y/n)?: ");
-            String continueChoice = scanner.nextLine().trim();
-            if (!continueChoice.equalsIgnoreCase("y")) {
-                exit = true;
+        System.out.println("Please enter you full name");
+        String userName = scanner.nextLine();
+        Customer isCustomerInDb = null;
+        for (Customer c : new Customer[]{customer1, customer2, customer3, customer4, customer5}) {
+            if (c.getName().equalsIgnoreCase(userName)) {
+                isCustomerInDb = c;
+                break;
             }
         }
-    } else {
-        System.out.println("Sorry "+userName+" is not registered to our system.");
-    }
+        if (isCustomerInDb != null) {
+            commonUserName = userName;
 
-}
+            System.out.println("Hii " + commonUserName.toUpperCase() + "! Welcome to Weekend Fitness Club.");
+
+            boolean exit = false;
+
+            while (!exit) {
+                System.out.println("Please select any option:");
+                System.out.println("1. Booking a lesson");
+                System.out.println("2. Update your booking");
+                System.out.println("3. Attend a lesson");
+                System.out.println("4. Display report");
+                System.out.println("5. Exit WFC");
+                int customerChoice = scanner.nextInt();
+                scanner.nextLine();
+
+
+                switch (customerChoice) {
+                    case 1:
+                        bookLessonWFC();
+                        break;
+
+                    case 2:
+                        // View lessons by fitness type
+                        updateBookingWFC();
+                        break;
+
+                    case 3:
+                        // Book a Lesson
+                        attendLessonWFC();
+                        break;
+
+                    case 4:
+                        // Cancel Booking
+                        displayReportWFC();
+                        break;
+
+                    case 5:
+                        System.out.println("Bye. See you later.");
+                        return;
+
+                    default:
+                        System.out.println("Invalid choice. Please enter a number from 1 to 8.");
+                        break;
+                }
+
+                System.out.print("Continue Main Menu (y/n)?: ");
+                String continueChoice = scanner.nextLine().trim();
+                if (!continueChoice.equalsIgnoreCase("y")) {
+                    exit = true;
+                }
+            }
+        } else {
+            System.out.println("Sorry " + userName + " is not registered to our system.");
+        }
+
+    }
 
 }

@@ -47,10 +47,7 @@ public class Tester {
 
 
         MainMenu mainMenu = new MainMenu(customer1, customer2, customer3, customer4, customer5, lessons);
-
         mainMenu.mainMenuWFC();
-
-
 
     }
 }

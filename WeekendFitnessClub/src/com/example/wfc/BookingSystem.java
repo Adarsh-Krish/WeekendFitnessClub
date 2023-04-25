@@ -29,61 +29,6 @@ public class BookingSystem {
         return -1; // return -1 if the booking is not found
     }
 
-    public void viewBookingDb() {
-        if (bookingsDbArray.size() != 0) {
-            for (int i = 0; i < bookingsDbArray.size(); i++) {
-                System.out.println("Name: " + bookingsDbArray.get(i).getCustomer().getName());
-                System.out.println("Email: " + bookingsDbArray.get(i).getCustomer().getEmail());
-
-                System.out.println("Lesson: " + bookingsDbArray.get(i).getLesson().getFitnessType());
-                System.out.println("Day: " + bookingsDbArray.get(i).getLesson().getDay());
-                System.out.println("Weekend: " + bookingsDbArray.get(i).getLesson().getWeekend());
-                System.out.println("availableCapacity: " + bookingsDbArray.get(i).getLesson().getAvailableCapacity());
-                System.out.println("rating: " + bookingsDbArray.get(i).getRating());
-            }
-        } else System.out.println("Nothing in array");
-
-    }
-//    public ArrayList<Customer> getCustomers() {
-//        return customersDbArray;
-//    }
-//    public void viewBookingList(){
-//
-//        if (bookingsDbArray.size() != 0){
-//            for (int i = 0; i < bookingsDbArray.size(); i++) {
-//                    System.out.println("bookingList: "+bookingsDbArray.get(i).getLesson().getBookingList().get(i).toString());
-//
-////                System.out.println("Email: "+bookingsDbArray.get(i).getCustomer().getEmail());
-////
-////                System.out.println("Lesson: "+bookingsDbArray.get(i).getLesson().getFitnessType());
-////                System.out.println("Day: "+bookingsDbArray.get(i).getLesson().getDay());
-////                System.out.println("Weekend: "+bookingsDbArray.get(i).getLesson().getWeekend());
-////                System.out.println("availableCapacity: "+bookingsDbArray.get(i).getLesson().getAvailableCapacity());
-////                System.out.println("rating: "+bookingsDbArray.get(i).getRating());
-//            }
-//        } else System.out.println("Nothing in array");
-//
-//    }
-//
-//    public HashMap<String, Customer> getCustomers() {
-//        return customersDbArray;
-//    }
-
-//    public HashMap<String, Lesson> getLessons() {
-//        return lessonsDbArray;
-//    }
-
-
-    //    Function to add a customer
-//    public void addCustomerToCustomerDbArray(Customer customer) {
-//        customersDbArray.add(customer);
-//    }
-
-    //    Function to add a Lesson
-//    public void addLesson(Lesson lesson) {
-//        lessonsDbArray.add(lesson);
-//    }
-
     public void bookLesson(Customer customer, Lesson lesson) {
         if (lesson.isBookingFull()) {
             System.out.println("Sorry. This " + lesson.getFitnessType() + " is full");
@@ -132,12 +77,6 @@ public class BookingSystem {
 
 
     public void rateLesson(Booking booking, int rating) {
-//        *****************************************************************************
-//        *****************************************************************************
-//            TRIAL:  Changing all isAttended to true
-//        booking.setAttended(true);
-//        *****************************************************************************
-//        *****************************************************************************
 
 
         if (!booking.isAttended()) {
@@ -193,93 +132,12 @@ public class BookingSystem {
         System.out.printf("Average rating Crossfit: %.2f\n", (double) totalRatingCrossfit / numOfLessonsCrossfit);
     }
 
-
-    public void printMonthlyChampionReport(int month) {
-        HashMap<String, Integer> map = new HashMap<>();
-        for (Booking booking : bookingsDbArray) {
-//            if (booking.getLesson().getMonth() == month){
-            String fitnessType = booking.getLesson().getFitnessType();
-            if (map.containsKey(fitnessType)) {
-                int income = map.get(fitnessType);
-                income += booking.getLesson().getPrice();
-                map.put(fitnessType, income);
-            } else {
-                map.put(fitnessType, booking.getLesson().getPrice());
-            }
-//            }
-        }
-        System.out.println("Monthly Champion Report for Month " + month);
-        for (String key : map.keySet()) {
-            System.out.println("Fitness Type: " + key + " Income: " + map.get(key));
-        }
-
-//        System.out.println("Lesson Report");
-//        int customerInYoga = 0, customerInSpin = 0, customerInPilates = 0, customerInCrossfit = 0, customerInBoxing = 0;
-//        int ratingFromDb = 0, countOfRating = 0;
-//        String lessonName, lessonDay, lessonRating;
-//
-//        for (int i = 0; i < bookingsDbArray.size(); i++) {
-//            lessonName = bookingsDbArray.get(i).getLesson().getFitnessType();
-//            lessonDay = bookingsDbArray.get(i).getLesson().getDay();
-////            To get rating
-//            if (bookingsDbArray.get(i).getRating() > 0) {
-//                ratingFromDb = ratingFromDb + bookingsDbArray.get(i).getRating();
-//                countOfRating++;
-//            }
-//
-//
-////            get number of customers
-//            if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Yoga")) {
-//                customerInYoga++;
-//            } else if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Spin")) {
-//                customerInSpin++;
-//            } else if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Pilates")) {
-//                customerInPilates++;
-//            } else if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Crossfit")) {
-//                customerInCrossfit++;
-//            } else if (bookingsDbArray.get(i).getLesson().getFitnessType().equalsIgnoreCase("Boxing")) {
-//                customerInBoxing++;
-//            }
-//
-//        }
-    }
-
-
     public void printChampionReport(int monthNumber) {
-//        HashMap<String, Integer> map = new HashMap<>();
-//        int highestIncome = 0;
-//        String highestIncomeFitnessType = "";
-//        for (Booking booking : bookingsDbArray) {
-////            if (booking.getLesson().getMonth() == month){
-//            String fitnessType = booking.getLesson().getFitnessType();
-//            if (map.containsKey(fitnessType)) {
-//                int income = map.get(fitnessType);
-//                income += booking.getLesson().getPrice();
-//                map.put(fitnessType, income);
-//                if (income > highestIncome) {
-//                    highestIncome = income;
-//                    highestIncomeFitnessType = fitnessType;
-//                } else {
-//                    map.put(fitnessType, booking.getLesson().getPrice());
-//                    if (booking.getLesson().getPrice() > highestIncome) {
-//                        highestIncome = booking.getLesson().getPrice();
-//                        highestIncomeFitnessType = fitnessType;
-//                    }
-//                }
-////            }
-//            }
-//        }
-//            System.out.println("Monthly Champion Report for Month " + monthNumber);
-//            System.out.println("Champion of the month is: " + highestIncomeFitnessType + " with income: " + highestIncome);
-//            for (String key : map.keySet()) {
-//                System.out.println("Fitness Type: " + key + " Income: " + map.get(key));
-//
-//            }
 
 
         HashMap<String, Integer> map = new HashMap<>();
         for (Booking booking : bookingsDbArray){
-//            if (booking.getLesson().getMonth() == month){
+//            if (booking.getLesson().getMonth() == monthNumber){
                 String fitnessType = booking.getLesson().getFitnessType();
                 if (map.containsKey(fitnessType)){
                     int income = map.get(fitnessType);
@@ -302,54 +160,5 @@ public class BookingSystem {
 
     }
 
-
-
-
-
-
-
 }
 
-
-
-//            System.out.println(bookingsDbArray.get(i).getLesson().getFitnessType()+" Statistics: ");
-
-
-//            System.out.print("Day: "+bookingsDbArray.get(i).getLesson().getDay()+"  "+);
-//            System.out.println("Weekend: "+bookingsDbArray.get(i).getLesson().getWeekend());
-//            System.out.println("maxCapacity: "+bookingsDbArray.get(i).getLesson().getMaxCapacity());
-//            System.out.println("rating: "+bookingsDbArray.get(i).getRating());
-//        }
-
-
-
-//        for (Lesson lesson : lessonsDbArray) {
-//            System.out.println("Lesson: " + lesson.getFitnessType() + ", Day: " + lesson.getDay());
-//            System.out.println("Number of Customers: " + lesson.getBookingList().size());
-//            int totalRating = 0;
-//            int ratedBookings = 0;
-//            for (Booking booking : lesson.getBookingList()) {
-//                if (booking.getRating() > 0) {
-//                    totalRating += booking.getRating();
-//                    ratedBookings++;
-//                }
-//            }
-//            if (ratedBookings > 0) {
-//                double avgRating = (double) totalRating / ratedBookings;
-//                System.out.println("Average Rating: " + avgRating);
-//            } else {
-//                System.out.println("Average Rating: N/A");
-//            }
-//        }
-//    }
-
-//    for (Booking b : bookingsDbArray) {
-//        System.out.println("Customer Name:" + b.getCustomer().getName());
-////            System.out.println("Customer Email:"+b.getCustomer().getEmail());
-//        System.out.println("Fitness Type:" + b.getLesson().getFitnessType());
-////            System.out.println("Day:"+b.getLesson().getDay());
-////            System.out.println("Weekend:"+b.getLesson().getWeekend());
-////            System.out.println("Available Capacity:"+b.getLesson().getAvailableCapacity());
-////            System.out.println("Max Capacity:"+b.getLesson().getMaxCapacity());
-//
-//    }
