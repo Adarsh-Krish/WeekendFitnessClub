@@ -7,7 +7,8 @@ public class MainMenu {
     private Lesson[] lessons;
     Scanner scanner = new Scanner(System.in);
     BookingSystem bookingSystem = new BookingSystem();
-    
+
+    String commonUserName;
 
     public MainMenu(Customer customer1, Customer customer2, Customer customer3, Customer customer4, Customer customer5, Lesson[] lessons) {
 
@@ -40,8 +41,8 @@ public class MainMenu {
     }
 
     public void bookLessonMainMenu(){
-        System.out.print("Enter customer full name: ");
-                    String customerName = scanner.nextLine();
+//        System.out.print("Enter customer full name: ");
+//                    String customerName = scanner.nextLine();
                     System.out.print("Enter lesson name: ");
                     String lessonName = scanner.nextLine().trim();
                     System.out.print("Enter the day (Saturday/Sunday): ");
@@ -52,7 +53,7 @@ public class MainMenu {
                     // validate if customer and lesson are part of database
                     Customer isCustomer = null;
                     for (Customer c : new Customer[]{customer1, customer2, customer3, customer4, customer5}) {
-                        if (c.getName().equalsIgnoreCase(customerName)) {
+                        if (c.getName().equalsIgnoreCase(commonUserName)) {
                             isCustomer = c;
                             break;
                         }
@@ -76,8 +77,8 @@ public class MainMenu {
     }
 
     public void cancelLessonMainMenu(){
-        System.out.print("Enter customer full name: ");
-                    String customerNameToCancel = scanner.nextLine();
+//        System.out.print("Enter customer full name: ");
+//                    String customerNameToCancel = scanner.nextLine();
                     System.out.print("Enter lesson name: ");
                     String lessonNameToCancel = scanner.nextLine().trim();
                     System.out.print("Enter the day (Saturday/Sunday): ");
@@ -93,7 +94,7 @@ public class MainMenu {
                         }
                     }
                     if (isLessonToCancel != null) {
-                        int index = bookingSystem.getBookingIndex(customerNameToCancel, lessonNameToCancel,lessonDayToCancel, lessonWeekendToCancel );
+                        int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToCancel,lessonDayToCancel, lessonWeekendToCancel );
                         if (index != -1) {
                             Booking unwantedBooking = bookingSystem.getBookings().get(index);
                             bookingSystem.cancelBooking(unwantedBooking);
@@ -107,8 +108,8 @@ public class MainMenu {
 
 
     public void changeLessonMainMenu() {
-        System.out.print("Enter customer full name: ");
-                    String customerNameToChange = scanner.nextLine();
+//        System.out.print("Enter customer full name: ");
+//                    String customerNameToChange = scanner.nextLine();
                     System.out.print("Enter lesson name: ");
                     String lessonNameToChange = scanner.nextLine().trim();
                     System.out.print("Enter the day (Saturday/Sunday): ");
@@ -151,7 +152,7 @@ public class MainMenu {
 //                        ************************************************************************
 //                        ************************************************************************
                     if (isLessonToChange != null && newBookingLesson != null) {
-                        int index = bookingSystem.getBookingIndex(customerNameToChange, lessonNameToChange,lessonDayToChange, lessonWeekendToChange );
+                        int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToChange,lessonDayToChange, lessonWeekendToChange );
                         if (index != -1) {
                             Booking oldBooking = bookingSystem.getBookings().get(index);
                             bookingSystem.changeBooking(oldBooking, newBookingLesson);
@@ -165,8 +166,8 @@ public class MainMenu {
 
 
     public void  rateLessonMainMenu() {
-        System.out.print("Enter customer full name: ");
-                    String customerNameToRate = scanner.nextLine();
+//        System.out.print("Enter customer full name: ");
+//                    String customerNameToRate = scanner.nextLine();
                     System.out.print("Enter lesson name you want to rate: ");
                     String lessonNameToRate = scanner.nextLine().trim();
                     System.out.print("Enter which day (Saturday/Sunday): ");
@@ -185,7 +186,7 @@ public class MainMenu {
                         }
                     }
                     if (isLessonToRate != null) {
-                        int index = bookingSystem.getBookingIndex(customerNameToRate, lessonNameToRate,lessonDayToRate, lessonWeekendToRate );
+                        int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToRate,lessonDayToRate, lessonWeekendToRate );
                         if (index != -1) {
                             Booking bookingToRate = bookingSystem.getBookings().get(index);
                             bookingSystem.rateLesson(bookingToRate, ratingByCustomer);
@@ -199,8 +200,8 @@ public class MainMenu {
     }
 
     public void attendLesson(){
-        System.out.print("Enter customer full name: ");
-        String customerNameToAttend = scanner.nextLine();
+//        System.out.print("Enter customer full name: ");
+//        String customerNameToAttend = scanner.nextLine();
         System.out.print("Enter lesson name you want to attend: ");
         String lessonNameToAttend = scanner.nextLine().trim();
         System.out.print("Enter which day (Saturday/Sunday): ");
@@ -217,7 +218,7 @@ public class MainMenu {
             }
         }
         if (isLessonToAttend != null) {
-            int index = bookingSystem.getBookingIndex(customerNameToAttend, lessonNameToAttend,lessonDayToAttend, lessonWeekendToAttend );
+            int index = bookingSystem.getBookingIndex(commonUserName, lessonNameToAttend,lessonDayToAttend, lessonWeekendToAttend );
             if (index != -1) {
                 bookingSystem.getBookings().get(index).setAttended(true);
                 System.out.println("You have successfully completed this lesson");
@@ -401,66 +402,77 @@ public class MainMenu {
 public void mainMenuWFC(){
 
     System.out.println("Please enter you full name");
-
-
-
-    boolean exit = false;
-
-    while (!exit) {
-        System.out.println("Please select any option:");
-        System.out.println("1. Booking a lesson");
-        System.out.println("2. Update your booking");
-        System.out.println("3. Attend a lesson");
-        System.out.println("4. Display report");
-        System.out.println("5. Exit WFC");
-        System.out.println("6. view bookingDbArrayay");
-        int customerChoice = scanner.nextInt();
-        scanner.nextLine();
-        /* todo
-         *   make customer name common to all cases
-         * */
-
-        switch (customerChoice) {
-            case 1:
-                // View lessons by day
-                bookLessonWFC();
-                break;
-
-            case 2:
-                // View lessons by fitness type
-                updateBookingWFC();
-                break;
-
-            case 3:
-                // Book a Lesson
-                attendLessonWFC();
-                break;
-
-            case 4:
-                // Cancel Booking
-                displayReportWFC();
-                break;
-
-            case 5:
-                System.out.println("Bye. See you later.");
-                return;
-
-            case 6:
-                // View db
-                viewBookingDBArray();
-                break;
-
-            default:
-                System.out.println("Invalid choice. Please enter a number from 1 to 8.");
-                break;
-        }
-
-        System.out.print("Continue Main Menu (y/n)?: ");
-        String continueChoice = scanner.nextLine().trim();
-        if (!continueChoice.equalsIgnoreCase("y")) {
-            exit = true;
+    String userName = scanner.nextLine();
+    Customer isCustomerInDb = null;
+    for (Customer c : new Customer[]{customer1, customer2, customer3, customer4, customer5}) {
+        if (c.getName().equalsIgnoreCase(userName)) {
+            isCustomerInDb = c;
+            break;
         }
     }
+    if (isCustomerInDb != null) {
+        commonUserName = userName;
+        boolean exit = false;
+
+        while (!exit) {
+            System.out.println("Please select any option:");
+            System.out.println("1. Booking a lesson");
+            System.out.println("2. Update your booking");
+            System.out.println("3. Attend a lesson");
+            System.out.println("4. Display report");
+            System.out.println("5. Exit WFC");
+            System.out.println("6. view bookingDbArrayay");
+            int customerChoice = scanner.nextInt();
+            scanner.nextLine();
+            /* todo
+             *   make customer name common to all cases
+             * */
+
+            switch (customerChoice) {
+                case 1:
+                    // View lessons by day
+                    bookLessonWFC();
+                    break;
+
+                case 2:
+                    // View lessons by fitness type
+                    updateBookingWFC();
+                    break;
+
+                case 3:
+                    // Book a Lesson
+                    attendLessonWFC();
+                    break;
+
+                case 4:
+                    // Cancel Booking
+                    displayReportWFC();
+                    break;
+
+                case 5:
+                    System.out.println("Bye. See you later.");
+                    return;
+
+                case 6:
+                    // View db
+                    viewBookingDBArray();
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please enter a number from 1 to 8.");
+                    break;
+            }
+
+            System.out.print("Continue Main Menu (y/n)?: ");
+            String continueChoice = scanner.nextLine().trim();
+            if (!continueChoice.equalsIgnoreCase("y")) {
+                exit = true;
+            }
+        }
+    } else {
+        System.out.println("Sorry "+userName+" is not registered to our system.");
+    }
+
 }
 
 }
