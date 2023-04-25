@@ -25,7 +25,7 @@ public class MainMenu {
     public void viewMenuByDay(){
         System.out.print("Enter day (Saturday/Sunday): ");
         String daySelected = scanner.nextLine().trim();
-        System.out.printf("%-10s %-10s %-10s %-10s %-10s \n", "Day", "Lesson", "Weekend", "Spot Left", "Max. Capacity");
+        System.out.printf("%-10s %-10s %-10s %-10s %-10s \n", "Day", "Lesson", "Weekend", "Spot Left", "Price");
         for (Lesson lesson : lessons) {
             lesson.viewLessonByDay(daySelected);
         }
@@ -34,7 +34,7 @@ public class MainMenu {
     public void viewMenuByFitnessType(){
         System.out.println("Select the available Fitness Types (Yoga/Spin/Pilates/Crossfit/Boxing)");
         String fitnessTypeSelected = scanner.nextLine().trim();
-        System.out.printf("%-10s %-10s %-10s %-10s %-10s \n", "Lesson", "Day", "Weekend", "Spot Left", "Max. Capacity");
+        System.out.printf("%-10s %-10s %-10s %-10s %-10s \n", "Lesson", "Day", "Weekend", "Spot Left", "Price");
         for (Lesson lesson : lessons) {
             lesson.viewLessonByFitnessType(fitnessTypeSelected);
         }
@@ -412,6 +412,9 @@ public void mainMenuWFC(){
     }
     if (isCustomerInDb != null) {
         commonUserName = userName;
+
+        System.out.println("Hii "+commonUserName.toUpperCase()+"! Welcome to Weekend Fitness Club.");
+
         boolean exit = false;
 
         while (!exit) {

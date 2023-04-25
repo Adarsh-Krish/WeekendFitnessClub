@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Tester {
     public static void main(String[] args) {
-        System.out.println("Welcome to Weekend Fitness Club!");
-
         Customer customer1 = new Customer("John Smith", "john@gmail.com");
         Customer customer2 = new Customer("Sarah Johnson", "sarah@gmail.com");
         Customer customer3 = new Customer("Mark Davis", "mark@gmail.com");
@@ -15,36 +13,36 @@ public class Tester {
         Lesson[] lessons = new Lesson[32];
 
         lessons[0] = new Lesson("Yoga", "Saturday", "Weekend 1", 5);
-        lessons[1] = new Lesson("Pilates", "Saturday", "Weekend 1", 5);
+        lessons[1] = new Lesson("Pilates", "Saturday", "Weekend 1", 6);
         lessons[2] = new Lesson("Boxing", "Saturday", "Weekend 1", 5);
-        lessons[3] = new Lesson("CrossFit", "Saturday", "Weekend 1", 5);
+        lessons[3] = new Lesson("CrossFit", "Saturday", "Weekend 1", 7);
         lessons[4] = new Lesson("Spin", "Sunday", "Weekend 1", 5);
         lessons[5] = new Lesson("Boxing", "Sunday", "Weekend 1", 5);
         lessons[6] = new Lesson("Yoga", "Sunday", "Weekend 1", 5);
-        lessons[7] = new Lesson("Crossfit", "Sunday", "Weekend 1", 5);
+        lessons[7] = new Lesson("Crossfit", "Sunday", "Weekend 1", 7);
         lessons[8] = new Lesson("Yoga", "Saturday", "Weekend 2", 5);
-        lessons[9] = new Lesson("Pilates", "Saturday", "Weekend 2", 5);
+        lessons[9] = new Lesson("Pilates", "Saturday", "Weekend 2", 6);
         lessons[10] = new Lesson("Boxing", "Saturday", "Weekend 2", 5);
-        lessons[11] = new Lesson("CrossFit", "Saturday", "Weekend 2", 5);
+        lessons[11] = new Lesson("CrossFit", "Saturday", "Weekend 2", 7);
         lessons[12] = new Lesson("Spin", "Sunday", "Weekend 2", 5);
         lessons[13] = new Lesson("Boxing", "Sunday", "Weekend 2", 5);
         lessons[14] = new Lesson("Yoga", "Sunday", "Weekend 2", 5);
-        lessons[15] = new Lesson("Crossfit", "Sunday", "Weekend 2", 5);
+        lessons[15] = new Lesson("Crossfit", "Sunday", "Weekend 2", 7);
         lessons[16] = new Lesson("Yoga", "Saturday", "Weekend 3", 5);
-        lessons[17] = new Lesson("Pilates", "Saturday", "Weekend 3", 5);
+        lessons[17] = new Lesson("Pilates", "Saturday", "Weekend 3", 6);
         lessons[18] = new Lesson("Boxing", "Saturday", "Weekend 3", 5);
-        lessons[19] = new Lesson("CrossFit", "Saturday", "Weekend 3", 5);
+        lessons[19] = new Lesson("CrossFit", "Saturday", "Weekend 3", 7);
         lessons[20] = new Lesson("Spin", "Sunday", "Weekend 3", 5);
         lessons[21] = new Lesson("Boxing", "Sunday", "Weekend 3", 5);
         lessons[22] = new Lesson("Yoga", "Sunday", "Weekend 3", 5);
-        lessons[23] = new Lesson("Crossfit", "Sunday", "Weekend 3", 5);
+        lessons[23] = new Lesson("Crossfit", "Sunday", "Weekend 3", 7);
         lessons[24] = new Lesson("Yoga", "Saturday", "Weekend 4", 5);
-        lessons[25] = new Lesson("Pilates", "Saturday", "Weekend 4", 5);
+        lessons[25] = new Lesson("Pilates", "Saturday", "Weekend 4", 6);
         lessons[26] = new Lesson("Boxing", "Saturday", "Weekend 4", 5);
-        lessons[27] = new Lesson("CrossFit", "Saturday", "Weekend 4", 5);
+        lessons[27] = new Lesson("CrossFit", "Saturday", "Weekend 4", 7);
         lessons[28] = new Lesson("Spin", "Sunday", "Weekend 4", 5);
         lessons[29] = new Lesson("Yoga", "Saturday", "Weekend 4", 5);
-        lessons[30] = new Lesson("Pilates", "Saturday", "Weekend 4", 5);
+        lessons[30] = new Lesson("Pilates", "Saturday", "Weekend 4", 6);
         lessons[31] = new Lesson("Boxing", "Saturday", "Weekend 4", 5);
 
 

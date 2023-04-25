@@ -6,18 +6,19 @@ public class Lesson {
     private String fitnessType;
     private String day;
     private String weekend;
-    private int maxCapacity;
+    private int maxCapacity = 5;
 
     private int availableCapacity;
+    private int price;
 
     private ArrayList<Booking> bookingList;
 
-    public Lesson(String fitnessType, String day, String weekend, int maxCapacity) {
+    public Lesson(String fitnessType, String day, String weekend, int price) {
         this.fitnessType = fitnessType;
         this.day = day;
         this.weekend = weekend;
-        this.maxCapacity = maxCapacity;
-        this.availableCapacity = maxCapacity;
+        this.price = price;
+        this.availableCapacity = price;
         this.bookingList = new ArrayList<>();
     }
 
@@ -29,8 +30,8 @@ public class Lesson {
         return day;
     }
 
-    public int getMaxCapacity() {
-        return maxCapacity;
+    public int getPrice() {
+        return price;
     }
 
     public int getAvailableCapacity() {
@@ -46,7 +47,7 @@ public class Lesson {
     }
 
     public boolean isBookingFull() {
-        return bookingList.size() >= maxCapacity;
+        return bookingList.size() >= price;
     }
 
     public void addBookingList(Booking booking){
@@ -61,7 +62,7 @@ public class Lesson {
     }
 
 //    public void increaseAvailableCapacity(){
-//        if (availableCapacity<maxCapacity){
+//        if (availableCapacity<price){
 //            this.availableCapacity = availableCapacity+1;
 //        } else {
 //            System.out.println("Maximum Capacity is empty");
@@ -81,13 +82,13 @@ public class Lesson {
     public void viewLessonByDay(String selectedDay){
 
         if (selectedDay.equalsIgnoreCase(getDay())){
-            System.out.printf("%-10s %-10s %-10s %-10d %-10d \n", day, fitnessType, weekend, availableCapacity, maxCapacity);
+            System.out.printf("%-10s %-10s %-10s %-10d $%-10d \n", day, fitnessType, weekend, availableCapacity, price);
         }
     }
 
     public void viewLessonByFitnessType(String selectedFitnessType){
         if (selectedFitnessType.equalsIgnoreCase(getFitnessType())){
-            System.out.printf("%-10s %-10s %-10s %-10d %-10d \n", fitnessType, day, weekend, availableCapacity, maxCapacity);
+            System.out.printf("%-10s %-10s %-10s %-10d $%-10d \n", fitnessType, day, weekend, availableCapacity, price);
         }
     }
 
