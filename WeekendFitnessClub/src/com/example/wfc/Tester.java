@@ -14,15 +14,16 @@ public class Tester {
 
         Scanner scanner = new Scanner(System.in);
 
+
         Customer customer1 = new Customer("John Smith", "john@gmail.com");
         Customer customer2 = new Customer("Sarah Johnson", "sarah@gmail.com");
         Customer customer3 = new Customer("Mark Davis", "mark@gmail.com");
         Customer customer4 = new Customer("Emily Brown", "emily@gmail.com");
         Customer customer5 = new Customer("David Lee", "david@gmail.com");
-
-        BookingSystem bookingSystem = new BookingSystem();
-
-
+//
+//        BookingSystem bookingSystem = new BookingSystem();
+//
+//
         Lesson[] lessons = new Lesson[32];
 
         lessons[0] = new Lesson("Yoga", "Saturday", "Weekend 1", 5);
@@ -60,6 +61,8 @@ public class Tester {
 
 
         boolean exit = false;
+        MainMenu mainMenu = new MainMenu(customer1, customer2, customer3, customer4, customer5, lessons);
+
 
         while (!exit) {
             System.out.println("Please select any option:");
@@ -81,201 +84,49 @@ public class Tester {
             switch (customerChoice) {
                 case 1:
                     // View lessons by day
-                    System.out.print("Enter day (Saturday/Sunday): ");
-                    String daySelected = scanner.nextLine().trim();
-                    System.out.printf("%-10s %-10s %-10s %-10s %-10s \n", "Day", "Lesson", "Weekend", "Spot Left", "Max. Capacity");
-                    for (Lesson lesson : lessons) {
-                        lesson.viewLessonByDay(daySelected);
-                    }
+                    mainMenu.viewMenuByDay();
                     break;
 
                 case 2:
                     // View lessons by fitness type
-                    System.out.println("Select the available Fitness Types (Yoga/Spin/Pilates/Crossfit/Boxing)");
-                    String fitnessTypeSelected = scanner.nextLine().trim();
-                    System.out.printf("%-10s %-10s %-10s %-10s %-10s \n", "Lesson", "Day", "Weekend", "Spot Left", "Max. Capacity");
-                    for (Lesson lesson : lessons) {
-                        lesson.viewLessonByFitnessType(fitnessTypeSelected);
-                    }
+                    mainMenu.viewMenuByFitnessType();
                     break;
-
+//
                 case 3:
-                    // Book a Lesson
-                    System.out.print("Enter customer full name: ");
-                    String customerName = scanner.nextLine();
-                    System.out.print("Enter lesson name: ");
-                    String lessonName = scanner.nextLine().trim();
-                    System.out.print("Enter the day (Saturday/Sunday): ");
-                    String lessonDay = scanner.nextLine().trim();
-                    System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String lessonWeekend = scanner.nextLine().trim();
-
-                    // validate if customer and lesson are part of database
-                    Customer isCustomer = null;
-                    for (Customer c : new Customer[]{customer1, customer2, customer3, customer4, customer5}) {
-                        if (c.getName().equalsIgnoreCase(customerName)) {
-                            isCustomer = c;
-                            break;
-                        }
-                    }
-
-                    Lesson isLesson = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(lessonName) && l.getDay().equalsIgnoreCase(lessonDay)
-                                && l.getWeekend().equalsIgnoreCase(lessonWeekend)) {
-                            isLesson = l;
-                            break;
-                        }
-                    }
-
-                    // book lesson if customer and lesson are valid
-                    if (isCustomer != null && isLesson != null) {
-                        bookingSystem.bookLesson(isCustomer, isLesson);
-                    } else {
-                        System.out.println("Invalid customer or lesson.");
-                    }
+//                    // Book a Lesson
+                    mainMenu.bookLessonMainMenu();
                     break;
-
+//
                 case 4:
-                    // Cancel Booking
-                    System.out.print("Enter customer full name: ");
-                    String customerNameToCancel = scanner.nextLine();
-                    System.out.print("Enter lesson name: ");
-                    String lessonNameToCancel = scanner.nextLine().trim();
-                    System.out.print("Enter the day (Saturday/Sunday): ");
-                    String lessonDayToCancel = scanner.nextLine().trim();
-                    System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String lessonWeekendToCancel = scanner.nextLine().trim();
-                    Lesson isLessonToCancel = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(lessonNameToCancel) && l.getDay().equalsIgnoreCase(lessonDayToCancel)
-                                && l.getWeekend().equalsIgnoreCase(lessonWeekendToCancel)) {
-                            isLessonToCancel = l;
-                            break;
-                        }
-                    }
-                    if (isLessonToCancel != null) {
-                        int index = bookingSystem.getBookingIndex(customerNameToCancel, lessonNameToCancel,lessonDayToCancel, lessonWeekendToCancel );
-                        if (index != -1) {
-                            Booking unwantedBooking = bookingSystem.getBookings().get(index);
-                            bookingSystem.cancelBooking(unwantedBooking);
-                        } else {
-                            System.out.println("Booking not found.");
-                        }
-                    } else {
-                        System.out.println("Invalid customer or lesson.");
-                    }
+//                    // Cancel Booking
+                    mainMenu.cancelLessonMainMenu();
                     break;
-
+//
                 case 5:
-//                    System.out.println("case 5");
-                    // Cancel booking
-                    System.out.print("Enter customer full name: ");
-                    String customerNameToChange = scanner.nextLine();
-                    System.out.print("Enter lesson name: ");
-                    String lessonNameToChange = scanner.nextLine().trim();
-                    System.out.print("Enter the day (Saturday/Sunday): ");
-                    String lessonDayToChange = scanner.nextLine().trim();
-                    System.out.print("Enter the weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String lessonWeekendToChange = scanner.nextLine().trim();
-                    Lesson isLessonToChange = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(lessonNameToChange) && l.getDay().equalsIgnoreCase(lessonDayToChange)
-                                && l.getWeekend().equalsIgnoreCase(lessonWeekendToChange)) {
-                            isLessonToChange = l;
-                            break;
-                        }
-                    }
-//                        ************************************************************************
-//                        ************************************************************************
-//                        ************************************************************************
-//                        ************************************************************************
-//                    Booking new Lesson
-                    System.out.print("Enter new lesson name: ");
-                    String newLessonName = scanner.nextLine().trim();
-                    System.out.print("Enter the new day (Saturday/Sunday): ");
-                    String newLessonDay = scanner.nextLine().trim();
-                    System.out.print("Enter the new weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String newLessonWeekend = scanner.nextLine().trim();
-
-
-                    Lesson newBookingLesson = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(newLessonName) && l.getDay().equalsIgnoreCase(newLessonDay)
-                                && l.getWeekend().equalsIgnoreCase(newLessonWeekend)) {
-                            newBookingLesson = l;
-                            break;
-                        }
-                    }
-
-
-//                        ************************************************************************
-//                        ************************************************************************
-//                        ************************************************************************
-//                        ************************************************************************
-                    if (isLessonToChange != null && newBookingLesson != null) {
-                        int index = bookingSystem.getBookingIndex(customerNameToChange, lessonNameToChange,lessonDayToChange, lessonWeekendToChange );
-                        if (index != -1) {
-                            Booking oldBooking = bookingSystem.getBookings().get(index);
-                            bookingSystem.changeBooking(oldBooking, newBookingLesson);
-                        } else {
-                            System.out.println("Booking not found.");
-                        }
-                    } else {
-                        System.out.println("Invalid customer or lesson.");
-                    }
-
-
+//                    // Change booking
+                    mainMenu.changeLessonMainMenu();
                     break;
-
+//
                 case 6:
-                    // Rate a lesson
-                    System.out.print("Enter customer full name: ");
-                    String customerNameToRate = scanner.nextLine();
-                    System.out.print("Enter lesson name you want to rate: ");
-                    String lessonNameToRate = scanner.nextLine().trim();
-                    System.out.print("Enter which day (Saturday/Sunday): ");
-                    String lessonDayToRate = scanner.nextLine().trim();
-                    System.out.print("Enter which weekend (Weekend 1/Weekend 2/Weekend 3/Weekend 4): ");
-                    String lessonWeekendToRate = scanner.nextLine().trim();
-                    System.out.print("Enter rating on a scale of 1 to 5: ");
-                    int ratingByCustomer = scanner.nextInt();
-                    scanner.nextLine();
-                    Lesson isLessonToRate = null;
-                    for (Lesson l : lessons) {
-                        if (l.getFitnessType().equalsIgnoreCase(lessonNameToRate) && l.getDay().equalsIgnoreCase(lessonDayToRate)
-                                && l.getWeekend().equalsIgnoreCase(lessonWeekendToRate)) {
-                            isLessonToRate = l;
-                            break;
-                        }
-                    }
-                    if (isLessonToRate != null) {
-                        int index = bookingSystem.getBookingIndex(customerNameToRate, lessonNameToRate,lessonDayToRate, lessonWeekendToRate );
-                        if (index != -1) {
-                            Booking bookingToRate = bookingSystem.getBookings().get(index);
-                            bookingSystem.rateLesson(bookingToRate, ratingByCustomer);
-                        } else {
-                            System.out.println("Booking not found.");
-                        }
-                    } else {
-                        System.out.println("Invalid customer or lesson.");
-                    }
+//                    // Rate a lesson
+                    mainMenu.rateLessonMainMenu();
                     break;
-
+//
                 case 7:
-                    // View Report
-                    bookingSystem.printFinalReport();
+//                    // View Report
+//                    bookingSystem.printFinalReport();
+                    mainMenu.viewReportMainMenu();
                     break;
-
-
+//
+//
                 case 8:
-                    // View Report
+//                    // View Report
                     System.out.println("Bye. See you later.");
                     return;
-
+//
                 case 9:
-                    // View Report
-                    bookingSystem.viewBookingDb();
+//                    // View Report'
+                    mainMenu.viewBookingDBArray();
                     break;
 
                 default:
